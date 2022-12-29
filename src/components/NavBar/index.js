@@ -17,12 +17,19 @@ export default function NavBar() {
   const { isOpen, onToggle } = useDisclosure();
   return (
     <Box>
-      <Flex minH={"80px"} py={{ base: 4 }} px={{ base: 6 }} align={"center"}>
+      <Flex
+        minH={"80px"}
+        py={{ base: 4 }}
+        px={{ base: 6 }}
+        align={"center"}
+        backgroundColor={"pink.500"}
+      >
         <Flex flex={{ base: 1 }} justify={{ md: "start" }}>
           <Link
             href={"/"}
-            textAlign={useBreakpointValue({md: "left" })}
+            textAlign={useBreakpointValue({ md: "left" })}
             fontFamily={"heading"}
+            color={"white"}
             fontSize={{ sm: "xl", md: "xl", lg: "2xl" }}
             fontWeight={300}
             mr={1}
@@ -44,12 +51,16 @@ export default function NavBar() {
             icon={
               isOpen ? <Hamburger w={3} h={3} /> : <Hamburger w={5} h={5} />
             }
+            color={"white"}
             variant={"ghost"}
             aria-label={"Toggle Navigation"}
+            _hover={{
+              textDecoration: "none",
+            }}
           />
         </Flex>
       </Flex>
-      <Collapse in={isOpen} animateOpacity={true}>
+      <Collapse in={isOpen} animateOpacity>
         <MobileNav />
       </Collapse>
     </Box>
@@ -90,6 +101,7 @@ const DesktopNav = () => {
                 href={navItem.href ?? "#"}
                 fontSize={"lg"}
                 fontWeight={500}
+                color={"white"}
                 _hover={{
                   textDecoration: "none",
                   color: "gray.600",

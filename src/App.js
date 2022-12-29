@@ -5,19 +5,20 @@ import { ChakraProvider } from "@chakra-ui/react";
 
 //import all necessery components/pages
 import NavBar from "./components/NavBar";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <ChakraProvider>
       <Router>
         <NavBar />
-        {/* <Routes>
+        <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/contact" element={<Contact />} />
+          {/* <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/skills" element={<Skills />} />
-        <Route path="/work" element={<Work />} />
-        </Routes> */}
+        <Route path="/work" element={<Work />} /> */}
+        </Routes>
       </Router>
     </ChakraProvider>
   );
