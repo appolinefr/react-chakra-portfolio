@@ -1,23 +1,30 @@
+import React from "react";
 import {
   Box,
   Flex,
   Text,
   IconButton,
   Stack,
-  Collapse,
   Link,
   Popover,
   PopoverTrigger,
   useBreakpointValue,
   useDisclosure,
+  Drawer,
+  DrawerOverlay,
+  DrawerBody,
+  DrawerContent,
+  DrawerCloseButton,
 } from "@chakra-ui/react";
-import { Divide as Hamburger } from "hamburger-react";
+import { HamburgerIcon } from "@chakra-ui/icons";
 
 export default function NavBar() {
-  const { isOpen, onToggle } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = React.useRef();
   return (
     <Box>
       <Flex
+        as="header"
         minH={"80px"}
         py={{ base: 4 }}
         px={{ base: 6 }}
@@ -47,10 +54,9 @@ export default function NavBar() {
         </Flex>
         <Flex ml={{ base: -2 }} display={{ base: "flex", md: "none" }}>
           <IconButton
-            onClick={onToggle}
-            icon={
-              isOpen ? <Hamburger w={3} h={3} /> : <Hamburger w={5} h={5} />
-            }
+            onClick={onOpen}
+            ref={btnRef}
+            icon={<HamburgerIcon w={6} h={6} />}
             color={"white"}
             variant={"ghost"}
             aria-label={"Toggle Navigation"}
@@ -60,9 +66,20 @@ export default function NavBar() {
           />
         </Flex>
       </Flex>
-      <Collapse in={isOpen} animateOpacity>
-        <MobileNav />
-      </Collapse>
+      <Drawer
+        isOpen={isOpen}
+        placement="right"
+        onClose={onClose}
+        finalFocusRef={btnRef}
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton onClick={onClose} />
+          <DrawerBody>
+            <MobileNav />
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
     </Box>
   );
 }
@@ -119,7 +136,7 @@ const DesktopNav = () => {
 
 const MobileNav = () => {
   return (
-    <Stack p={4} backgroundColor={"grey"} display={{ md: "none" }}>
+    <Stack p={4} display={{ md: "none" }}>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
