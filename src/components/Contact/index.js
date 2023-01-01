@@ -39,9 +39,8 @@ export default function ContactForm() {
   };
 
   return (
-    // <Box as={Container} maxW="full">
     <Box>
-      <Heading
+      <Heading id="contact"
         as={Center}
         fontWeight={600}
         fontSize={{ base: "xl", sm: "2xl", md: "4xl" }}
@@ -63,7 +62,7 @@ export default function ContactForm() {
             p={8}
             color={useColorModeValue("gray.700", "whiteAlpha.900")}
             shadow="base"
-            w={{ base: "md", md: "lg", lg: "xl" }}
+            w={{ base: "sm", md: "md", lg: "lg" }}
           >
             <VStack spacing={5}>
               <form ref={form} onSubmit={sendEmail}>
@@ -71,6 +70,7 @@ export default function ContactForm() {
                 <InputGroup mb={2}>
                   <InputLeftElement children={<BsPerson />} />
                   <Input
+                    required
                     name="user_name"
                     placeholder="Your Name"
                     size="md"
@@ -82,6 +82,7 @@ export default function ContactForm() {
                 <InputGroup my={2}>
                   <InputLeftElement children={<MdOutlineEmail />} />
                   <Input
+                    required
                     type="email"
                     placeholder="Your Email"
                     name="user_email"
@@ -91,6 +92,7 @@ export default function ContactForm() {
                 </InputGroup>
                 <FormLabel>Message</FormLabel>
                 <Textarea
+                  required
                   type="email"
                   placeholder="Your Message"
                   name="user_message"
@@ -120,6 +122,5 @@ export default function ContactForm() {
         </Box>
       </Box>
     </Box>
-    // </Box>
   );
 }

@@ -4,14 +4,13 @@ import {
   Text,
   HStack,
   Container,
-  Stack,
   Image,
   Flex,
   Button,
   Heading,
+  Center,
 } from "@chakra-ui/react";
 
-// import Weather from "../../../images/weather.png";
 import Abortion from "../../../images/abortion.png";
 import Dictionary from "../../../images/dictionnary.png";
 
@@ -23,19 +22,12 @@ const projects = [
     link: "https://abortion-saves-lives.herokuapp.com/",
     image: Abortion,
   },
-//   {
-//     name: "Weather Dashboard",
-//     description: "",
-//     link: "https://marvelous-cucurucho-bb2aec.netlify.app/",
-//     image: Weather,
-//   },
   {
     name: "React Dictionnary",
     description: "",
     link: "https://boisterous-pie-d58aaf.netlify.app/",
     image: Dictionary,
   },
-
 ];
 export default function Projects() {
   return (
@@ -56,46 +48,46 @@ export default function Projects() {
           color={"pink.400"}
           borderColor={"pink.400"}
           border={"solid"}
-          _hover={
-            {
-              bg: "pink.400",
-              color:"white"
-            }
-          }
+          _hover={{
+            bg: "pink.400",
+            color: "white",
+          }}
         >
           All projects
         </Button>
       </Flex>
-      <SimpleGrid columns={{ base: 1, md: 2, lg: 2 }} spacingX={16}>
+      <SimpleGrid columns={{ base: 1, md: 2, lg: 2 }} spacing={16}>
         {projects.map((project) => (
-          <Box
-            maxW={"450px"}
-            w={"full"}
-            boxShadow={"xl"}
-            rounded={"md"}
-            overflow={"hidden"}
-            backgroundColor={"gray.50"}
-          >
-            <HStack textAlign={"center"} p={6} align={"center"}>
-              <Image
-                alt={"Abortion is healthcare march"}
-                src={project.image}
-                objectFit={"cover"}
-                width={607}
-                aspect-ratio={607 / 304}
-                height={304}
-              />
-              <Text
-                fontSize={"lg"}
-                fontWeight={500}
-                p={2}
-                px={3}
-                mb={4}
-                color={"white"}
-                rounded={"full"}
-              ></Text>
-            </HStack>
-          </Box>
+          <Center>
+            <Box
+              maxW={"450px"}
+              w={"full"}
+              boxShadow={"xl"}
+              rounded={"md"}
+              overflow={"hidden"}
+              backgroundColor={"gray.50"}
+            >
+              <HStack textAlign={"center"} p={6} align={"center"}>
+                <Image
+                  alt={""}
+                  src={project.image}
+                  objectFit={"cover"}
+                  width={607}
+                  aspect-ratio={607 / 304}
+                  height={304}
+                />
+                <Text
+                  fontSize={"lg"}
+                  fontWeight={500}
+                  p={2}
+                  px={3}
+                  mb={4}
+                  color={"white"}
+                  rounded={"full"}
+                ></Text>
+              </HStack>
+            </Box>
+          </Center>
         ))}
       </SimpleGrid>
     </Box>

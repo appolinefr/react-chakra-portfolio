@@ -18,6 +18,8 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 
+import { BsSun } from "react-icons/bs";
+
 export default function NavBar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
@@ -65,6 +67,17 @@ export default function NavBar() {
             }}
           />
         </Flex>
+        <Flex ml={{ base: -2 }} display={{ base: "flex", md: "flex" }}>
+
+          <IconButton
+            icon={<BsSun w={6} h={6} />}
+            color={"white"}
+            variant={"ghost"}
+            _hover={{
+              textDecoration: "none",
+            }}
+          />
+        </Flex>
       </Flex>
       <Drawer
         isOpen={isOpen}
@@ -99,7 +112,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Contact",
-    href: "/contact",
+    href: "/#contact",
   },
   {
     label: "Resume",

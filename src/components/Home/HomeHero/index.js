@@ -4,7 +4,8 @@ import {
   Button,
   Stack,
   Box,
-  Container
+  Container,
+  Link,
 } from "@chakra-ui/react";
 
 export default function HomeHero() {
@@ -38,6 +39,8 @@ export default function HomeHero() {
           person, problem solver and independent with high attention to detail.
         </Text>
         <Button
+          as={Link}
+          href={"#contact"}
           maxW={40}
           colorScheme={"pink"}
           bg={"pink.400"}
