@@ -24,14 +24,14 @@ export default function NavBar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
   return (
-    <Box>
+    <Box >
       <Flex
-        as="header"
+        // as="header"
         minH={"80px"}
         py={{ base: 4 }}
         px={{ base: 6 }}
         align={"center"}
-        backgroundColor={"pink.500"}
+        backgroundColor={"#1B2333"}
       >
         <Flex flex={{ base: 1 }} justify={{ md: "start" }}>
           <Link
@@ -44,6 +44,7 @@ export default function NavBar() {
             mr={1}
             _hover={{
               textDecoration: "none",
+              color: "pink.500",
             }}
           >
             AC
@@ -68,7 +69,6 @@ export default function NavBar() {
           />
         </Flex>
         <Flex ml={{ base: -2 }} display={{ base: "flex", md: "flex" }}>
-
           <IconButton
             icon={<BsSun w={6} h={6} />}
             color={"white"}
@@ -100,19 +100,15 @@ export default function NavBar() {
 const NAV_ITEMS = [
   {
     label: "About",
-    href: "/about",
+    href: "#about",
   },
   {
-    label: "Skills",
-    href: "/skills",
-  },
-  {
-    label: "Work",
-    href: "/work",
+    label: "Projects",
+    href: "#projects",
   },
   {
     label: "Contact",
-    href: "/#contact",
+    href: "#contact",
   },
   {
     label: "Resume",
@@ -134,7 +130,7 @@ const DesktopNav = () => {
                 color={"white"}
                 _hover={{
                   textDecoration: "none",
-                  color: "gray.600",
+                  color: "pink.500",
                 }}
               >
                 {navItem.label}

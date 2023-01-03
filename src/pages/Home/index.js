@@ -1,21 +1,29 @@
-import { Box, Stack, VStack, Divider } from "@chakra-ui/react";
+import { Box, Stack, VStack} from "@chakra-ui/react";
+import { useMediaQuery } from "@chakra-ui/react";
 
-import Socials from "../../components/Home/Socials";
-import HomeHero from "../../components/Home/HomeHero";
-import Projects from "../../components/Home/LatestProjects";
+import Socials from "../../components/Socials";
+import HomeHero from "../../components/HomeHero";
+import Projects from "../../components/LatestProjects";
 import ContactForm from "../../components/Contact";
+import About from "../../components/About";
 
+;
 export default function Home() {
+  const [isLargerThan1280] = useMediaQuery("(min-width: 1441px)");
   return (
-    <Box py={{ base: 5, lg: 6 }} px={{ base: 5, lg: 20 }}>
+    <Box 
+      py={isLargerThan1280 ? 10 : { base: 5, lg: 6 }}
+      px={isLargerThan1280 ? 28 : { base: 5, lg: 20 }}
+      mx={isLargerThan1280 ? 28 : 0}
+    >
       <Stack
-        spacing={{ base: 4, md: 24, lg: 36 }}
+        spacing={isLargerThan1280 ? 56 : { base: 4, md: 24, lg: 36 }}
         direction={{ base: "column", md: "row" }}
       >
         <Socials />
-        <VStack spacing={{ base: 2, md: 4, lg: 4 }}>
+        <VStack spacing={{ base: 20, lg: 24}}>
           <HomeHero />
-          <Divider />
+          <About/>
           <Projects />
           <ContactForm />
         </VStack>

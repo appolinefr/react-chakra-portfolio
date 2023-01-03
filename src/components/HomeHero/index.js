@@ -10,15 +10,11 @@ import {
 
 export default function HomeHero() {
   return (
-    <Box as={Container} maxW="full" p={4}>
-      <Stack
-        textAlign={"left"}
-        spacing={{ base: 6, md: 8 }}
-        py={{ base: 20, md: 24 }}
-      >
+    <Box as={Container} maxW="full" my={{ base: 4, md: 12, lg: 16 }}>
+      <Stack textAlign={"left"} spacing={{ base: 6, md: 8 }}>
         <Text
           fontWeight={400}
-          fontSize={{ base: "xl", sm: "2xl", md: "3xl" }}
+          fontSize={{ base: "xl", lg: "2xl" }}
           lineHeight={"110%"}
         >
           Hi, my name is

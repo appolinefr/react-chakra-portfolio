@@ -11,6 +11,8 @@ import {
   Textarea,
   useColorModeValue,
   VStack,
+  Container,
+  Stack
 } from "@chakra-ui/react";
 
 import emailjs from "@emailjs/browser";
@@ -39,88 +41,81 @@ export default function ContactForm() {
   };
 
   return (
-    <Box>
-      <Heading id="contact"
-        as={Center}
-        fontWeight={600}
-        fontSize={{ base: "xl", sm: "2xl", md: "4xl" }}
-        lineHeight={"110%"}
-        my={{ base: 12, md: 16, lg: 24 }}
-      >
-        Get in Touch
-      </Heading>
-      <Box
-        borderRadius="lg"
-        my={{ base: 4, md: 8, lg: 8 }}
-        p={{ sm: 4, md: 8, lg: 8 }}
-        bg="pink"
-      >
-        <Box>
-          <Box
-            bg={useColorModeValue("white", "gray.700")}
-            borderRadius="lg"
-            p={8}
-            color={useColorModeValue("gray.700", "whiteAlpha.900")}
-            shadow="base"
-            w={{ base: "sm", md: "md", lg: "lg" }}
-          >
-            <VStack spacing={5}>
-              <form ref={form} onSubmit={sendEmail}>
-                <FormLabel>Name</FormLabel>
-                <InputGroup mb={2}>
-                  <InputLeftElement children={<BsPerson />} />
-                  <Input
-                    required
-                    name="user_name"
-                    placeholder="Your Name"
-                    size="md"
-                    type="name"
-                    focusBorderColor="#FF5677"
-                  />
-                </InputGroup>
-                <FormLabel>Email</FormLabel>
-                <InputGroup my={2}>
-                  <InputLeftElement children={<MdOutlineEmail />} />
-                  <Input
-                    required
-                    type="email"
-                    placeholder="Your Email"
-                    name="user_email"
-                    size="md"
-                    focusBorderColor="#FF5677"
-                  />
-                </InputGroup>
-                <FormLabel>Message</FormLabel>
-                <Textarea
+    <Box as={Center} maxW="full" my={{ base: 4, md: 12, lg: 16 }}>
+      <Stack>
+        <Heading
+          id="contact"
+          as={Center}
+          fontWeight={600}
+          lineHeight={"110%"}
+          py={{ base: 8, md: 12 }}
+        >
+          Get in Touch
+        </Heading>
+        <Box
+          bg={useColorModeValue("white", "gray.700")}
+          borderRadius="lg"
+          p={8}
+          color={useColorModeValue("gray.700", "whiteAlpha.900")}
+          shadow="base"
+          w={{ base: "sm", md: "md", lg: "lg" }}
+        >
+          <VStack spacing={5}>
+            <form ref={form} onSubmit={sendEmail}>
+              <FormLabel>Name</FormLabel>
+              <InputGroup mb={2}>
+                <InputLeftElement children={<BsPerson />} />
+                <Input
                   required
-                  type="email"
-                  placeholder="Your Message"
-                  name="user_message"
-                  rows={6}
+                  name="user_name"
+                  placeholder="Your Name"
+                  size="md"
+                  type="name"
                   focusBorderColor="#FF5677"
                 />
+              </InputGroup>
+              <FormLabel>Email</FormLabel>
+              <InputGroup my={2}>
+                <InputLeftElement children={<MdOutlineEmail />} />
                 <Input
-                  mt={4}
-                  fontWeight={600}
-                  type={"submit"}
-                  value={button}
-                  maxW={40}
-                  color="white"
-                  bg={"pink.400"}
-                  rounded={"full"}
-                  px={6}
-                  _hover={{
-                    bg: "white",
-                    color: "pink.400",
-                    borderColor: "pink.400",
-                    cursor: "pointer",
-                  }}
+                  required
+                  type="email"
+                  placeholder="Your Email"
+                  name="user_email"
+                  size="md"
+                  focusBorderColor="#FF5677"
                 />
-              </form>
-            </VStack>
-          </Box>
+              </InputGroup>
+              <FormLabel>Message</FormLabel>
+              <Textarea
+                required
+                type="email"
+                placeholder="Your Message"
+                name="user_message"
+                rows={6}
+                focusBorderColor="#FF5677"
+              />
+              <Input
+                mt={4}
+                fontWeight={600}
+                type={"submit"}
+                value={button}
+                maxW={40}
+                color="white"
+                bg={"pink.400"}
+                rounded={"full"}
+                px={6}
+                _hover={{
+                  bg: "white",
+                  color: "pink.400",
+                  borderColor: "pink.400",
+                  cursor: "pointer",
+                }}
+              />
+            </form>
+          </VStack>
         </Box>
-      </Box>
+      </Stack>
     </Box>
   );
 }
