@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Box,
   Container,
@@ -7,9 +7,10 @@ import {
   Divider,
   Button,
   Collapse,
+  useColorModeValue
 } from "@chakra-ui/react";
 
-import { useMediaQuery, useDisclosure } from "@chakra-ui/react";
+import { useMediaQuery } from "@chakra-ui/react";
 
 import Abortion from "../Projects/AbortionSavesLives";
 import Dictionary from "../Projects/ReactDictionnary";
@@ -18,16 +19,19 @@ import OtherProjects from "../Projects/OtherProjects";
 
 export default function Projects() {
   const [isLargerThan1280] = useMediaQuery("(min-width: 1441px)");
-  const { isOpen, onToggle } = useDisclosure();
   const [show, setShow] = React.useState(false);
   const handleToggle = () => setShow(!show);
+  
+  const dark = useColorModeValue("gray.800", "white");
+  const grey = useColorModeValue("gray.600", "gray.400");
+  const buttonBg = useColorModeValue("pink.400", "gray.800");
+  const button = useColorModeValue("white", "pink.400");
 
   return (
     <Box
       as={Container}
       maxW="full"
       p={isLargerThan1280 ? 8 : 4}
-      my={{ base: 4, md: 12, lg: 16 }}
     >
       <Flex alignItems={"center"}>
         <Heading
@@ -48,26 +52,26 @@ export default function Projects() {
       <Abortion />
       <Dictionary />
       <Weather />
-        <Collapse in={show}>
-          <OtherProjects />
-        </Collapse>
-        <Button
-          size="md"
-          onClick={handleToggle}
-          maxW={40}
-          color={"pink.400"}
-          bg={"white"}
-          borderRadius="sm"
-          border={"solid"}
-          borderColor={"pink.400"}
-          p={6}
-          _hover={{
-            bg: "pink.400",
-            color: "white",
-          }}
-        >
-          Show {show ? "Less" : "More"}
-        </Button>
+      <Collapse in={show}>
+        <OtherProjects />
+      </Collapse>
+      <Button
+        size="md"
+        onClick={handleToggle}
+        maxW={40}
+        color={button}
+        bg={buttonBg}
+        borderRadius="sm"
+        border={"solid"}
+        borderColor={"pink.400"}
+        p={6}
+        _hover={{
+          textDecoration: "none",
+          boxShadow: "0px 5px 10px rgba(236, 99, 166)",
+        }}
+      >
+        Show {show ? "Less" : "More"}
+      </Button>
     </Box>
   );
 }

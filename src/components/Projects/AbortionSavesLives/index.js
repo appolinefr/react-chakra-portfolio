@@ -3,12 +3,17 @@ import {
   Text,
   Image,
   Flex,
-  Button,
   Heading,
   Stack,
   List,
   ListItem,
+  useColorModeValue,
+  IconButton,
+  Link,
 } from "@chakra-ui/react";
+
+import { ExternalLinkIcon } from "@chakra-ui/icons";
+import { BsGithub } from "react-icons/bs";
 
 import Abortion from "../../../images/abortion.png";
 
@@ -29,27 +34,70 @@ const asl = {
 };
 
 export default function AbortionProject() {
+  const dark = useColorModeValue("gray.800", "white");
+  const grey = useColorModeValue("gray.600", "gray.400");
+  const button = useColorModeValue("white", "pink.500");
+  const boxBg = useColorModeValue("white", "whiteAlpha.200");
+
   return (
     <SimpleGrid
       columns={{ base: 1, md: 2, lg: 2 }}
-      spacing={{ sm: 8, md: 8, lg: 16 }}
-      mb={{ base: 8, md: 12, lg: 16 }}
+      spacing={{ sm: 4, md: 8, lg: 16 }}
     >
-      <Stack spacing={4} justifyContent={"center"}>
-        <Heading> {asl.name}</Heading>
-        <Text color={"gray.500"} fontSize={"lg"}>
+      <Stack
+        spacing={4}
+        justifyContent={"center"}
+        backgroundColor={boxBg}
+        p={5}
+        borderRadius="4px"
+      >
+        <Text color={"pink.500"} fontSize={"lg"}>
+          Featured project
+        </Text>
+        <Heading color={dark} fontSize={"30px"}>
+          {asl.name}
+        </Heading>
+        <Text color={grey} fontSize={"lg"}>
           {asl.description}
         </Text>
         <List>
-          <ListItem>{asl.tech}</ListItem>
+          <ListItem color={dark}>{asl.tech}</ListItem>
         </List>
+        <Flex justify={"flex-start"}>
+          <Link href={asl.link} target="_blank">
+            <IconButton
+              color={dark}
+              aria-label="github"
+              variant="ghost"
+              size="lg"
+              fontSize="xl"
+              icon={<BsGithub />}
+              _hover={{
+                color: button,
+              }}
+              isRound
+            />
+          </Link>
+          <Link href={asl.link} target="_blank">
+            <IconButton
+              color={dark}
+              aria-label="github"
+              variant="ghost"
+              size="lg"
+              fontSize="xl"
+              icon={<ExternalLinkIcon />}
+              _hover={{
+                color: button,
+              }}
+              isRound
+            />
+          </Link>
+        </Flex>
       </Stack>
       <Flex>
         <Image
-        opacity={0.2}
-        
-          border={"solid"}
-          alt={""}
+          alt={asl.name}
+          display={{ sm: "none", md: "block" }}
           src={asl.image}
           objectFit={"cover"}
           width={607}

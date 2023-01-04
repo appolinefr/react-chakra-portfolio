@@ -3,12 +3,17 @@ import {
   Text,
   Image,
   Flex,
-  Button,
   Heading,
   Stack,
   List,
   ListItem,
+  Link,
+  useColorModeValue,
+  IconButton,
 } from "@chakra-ui/react";
+
+import { ExternalLinkIcon } from "@chakra-ui/icons";
+import { BsGithub } from "react-icons/bs";
 
 import Dictionary from "../../../images/dictionary.png";
 
@@ -22,16 +27,21 @@ const dictionary = {
 };
 
 export default function ReactDictionary() {
+  const dark = useColorModeValue("gray.800", "white");
+  const grey = useColorModeValue("gray.600", "gray.400");
+  const button = useColorModeValue("white", "pink.500");
+  const boxBg = useColorModeValue("white", "whiteAlpha.200");
+
   return (
     <SimpleGrid
       columns={{ base: 1, md: 2, lg: 2 }}
-      spacing={{ sm: 8, md: 20 }}
-      my={{ base: 8, md: 12, lg: 16 }}
+      spacing={{ sm: 4, md: 8, lg: 16 }}
+      my={{ base: 4, md: 12, lg: 16 }}
     >
       <Flex>
         <Image
-          border={"solid"}
-          alt={""}
+          display={{ sm: "none", md: "block" }}
+          alt={dictionary.name}
           src={dictionary.image}
           objectFit={"cover"}
           width={607}
@@ -40,14 +50,55 @@ export default function ReactDictionary() {
           borderRadius={"md"}
         />
       </Flex>
-      <Stack spacing={4} justifyContent={"center"} backgroundColor={"gray.50"}>
-        <Heading>{dictionary.name}</Heading>
-        <Text color={"gray.500"} fontSize={"lg"}>
+      <Stack
+        spacing={4}
+        justifyContent={"center"}
+        backgroundColor={boxBg}
+        p={5}
+        borderRadius="4px"
+      >
+        <Text color={"pink.500"} fontSize={"lg"}>
+          Featured project
+        </Text>
+        <Heading color={dark} fontSize={"30px"}>
+          {dictionary.name}
+        </Heading>
+        <Text color={grey} fontSize={"lg"}>
           {dictionary.description}
         </Text>
         <List>
-          <ListItem>{dictionary.tech}</ListItem>
+          <ListItem color={dark}>{dictionary.tech}</ListItem>
         </List>
+        <Flex justify={"flex-start"}>
+          <Link href={dictionary.link} target="_blank">
+            <IconButton
+              color={dark}
+              aria-label="github"
+              variant="ghost"
+              size="lg"
+              fontSize="xl"
+              icon={<BsGithub />}
+              _hover={{
+                color: button,
+              }}
+              isRound
+            />
+          </Link>
+          <Link href={dictionary.link} target="_blank">
+            <IconButton
+              color={dark}
+              aria-label="github"
+              variant="ghost"
+              size="lg"
+              fontSize="xl"
+              icon={<ExternalLinkIcon />}
+              _hover={{
+                color: button,
+              }}
+              isRound
+            />
+          </Link>
+        </Flex>
       </Stack>
     </SimpleGrid>
   );

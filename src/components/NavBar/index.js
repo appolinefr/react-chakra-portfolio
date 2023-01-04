@@ -16,12 +16,15 @@ import {
   DrawerContent,
   DrawerCloseButton,
   useColorMode,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
-
 import { BsSun, BsMoon } from "react-icons/bs";
 
 export default function NavBar() {
+  const dark = useColorModeValue("gray.800", "white");
+  const light = useColorModeValue("white", "gray.800");
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
   const { colorMode, toggleColorMode } = useColorMode();
@@ -32,14 +35,14 @@ export default function NavBar() {
         py={{ base: 4 }}
         px={{ base: 6 }}
         align={"center"}
-        backgroundColor={"#1B2333"}
+        backgroundColor={light}
       >
         <Flex flex={{ base: 1 }} justify={{ md: "start" }}>
           <Link
             href={"/"}
             textAlign={useBreakpointValue({ md: "left" })}
             fontFamily={"heading"}
-            color={"white"}
+            color={dark}
             fontSize={{ sm: "xl", md: "xl", lg: "2xl" }}
             fontWeight={300}
             mr={1}
@@ -61,7 +64,7 @@ export default function NavBar() {
             onClick={onOpen}
             ref={btnRef}
             icon={<HamburgerIcon w={6} h={6} />}
-            color={"white"}
+            color={dark}
             variant={"ghost"}
             aria-label={"Toggle Navigation"}
             _hover={{
@@ -72,8 +75,8 @@ export default function NavBar() {
         <Flex ml={{ base: -2 }} display={{ base: "flex", md: "flex" }}>
           <IconButton
             onClick={toggleColorMode}
-            icon={colorMode === 'light' ? <BsMoon/> : <BsSun w={6} h={6} />}
-            color={"white"}
+            icon={colorMode === "light" ? <BsMoon /> : <BsSun w={6} h={6} />}
+            color={dark}
             variant={"ghost"}
             _hover={{
               textDecoration: "none",
@@ -118,6 +121,8 @@ const NAV_ITEMS = [
 ];
 
 const DesktopNav = () => {
+  const dark = useColorModeValue("gray.800", "white");
+
   return (
     <Stack direction={"row"} spacing={2}>
       {NAV_ITEMS.map((navItem) => (
@@ -129,7 +134,7 @@ const DesktopNav = () => {
                 href={navItem.href ?? "#"}
                 fontSize={"lg"}
                 fontWeight={500}
-                color={"white"}
+                color={dark}
                 _hover={{
                   textDecoration: "none",
                   color: "pink.500",
