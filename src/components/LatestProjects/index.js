@@ -1,13 +1,26 @@
-import { Box, Container, Heading, Flex, Divider } from "@chakra-ui/react";
+import React, { useState } from "react";
+import {
+  Box,
+  Container,
+  Heading,
+  Flex,
+  Divider,
+  Button,
+  Collapse,
+} from "@chakra-ui/react";
 
-import { useMediaQuery } from "@chakra-ui/react";
+import { useMediaQuery, useDisclosure } from "@chakra-ui/react";
 
 import Abortion from "../Projects/AbortionSavesLives";
 import Dictionary from "../Projects/ReactDictionnary";
 import Weather from "../Projects/Weather";
+import OtherProjects from "../Projects/OtherProjects";
 
 export default function Projects() {
   const [isLargerThan1280] = useMediaQuery("(min-width: 1441px)");
+  const { isOpen, onToggle } = useDisclosure();
+  const [show, setShow] = React.useState(false);
+  const handleToggle = () => setShow(!show);
 
   return (
     <Box
@@ -35,7 +48,26 @@ export default function Projects() {
       <Abortion />
       <Dictionary />
       <Weather />
-      {/* collapse with options to view more projects */}
+        <Collapse in={show}>
+          <OtherProjects />
+        </Collapse>
+        <Button
+          size="md"
+          onClick={handleToggle}
+          maxW={40}
+          color={"pink.400"}
+          bg={"white"}
+          borderRadius="sm"
+          border={"solid"}
+          borderColor={"pink.400"}
+          p={6}
+          _hover={{
+            bg: "pink.400",
+            color: "white",
+          }}
+        >
+          Show {show ? "Less" : "More"}
+        </Button>
     </Box>
   );
 }

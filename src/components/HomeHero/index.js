@@ -30,20 +30,24 @@ export default function HomeHero() {
             I am a Web Developer.
           </Text>
         </Heading>
-        <Text color={"gray.500"}>
-          I am a Full-Stack Developer from Melbourne, Australia. Well-organised
+        <Text  color={"gray.500"} fontSize={"lg"}>
+          I am a Full-Stack Developer from Melbourne, Australia. <br/>Well-organised
           person, problem solver and independent with high attention to detail.
         </Text>
         <Button
           as={Link}
           href={"#contact"}
           maxW={40}
-          colorScheme={"pink"}
-          bg={"pink.400"}
-          rounded={"full"}
-          px={6}
+          color={"pink.400"}
+          bg={"white"}
+          borderRadius="sm"
+          border={"solid"}
+          borderColor={"pink.400"}
+          p={6}
           _hover={{
             bg: "pink.400",
+            color: "white",
+            textDecoration: "none"
           }}
         >
           Contact me!

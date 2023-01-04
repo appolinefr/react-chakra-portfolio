@@ -57,7 +57,7 @@ export default function AboutAuthor() {
             Here are a few technologies I have been working with recently:
           </Text>
           <SimpleGrid columns={{ base: 2, md: 2 }} spacing={1}>
-            <List>
+            <List color={"gray.500"} fontSize={"md"}>
               <ListItem>
                 <ListIcon as={RxTriangleRight} />
                 JavaScript (ES6+)
@@ -75,7 +75,7 @@ export default function AboutAuthor() {
                 Node.js
               </ListItem>
             </List>
-            <List>
+            <List color={"gray.500"} fontSize={"md"}>
               <ListItem>
                 <ListIcon as={RxTriangleRight} />
                 JavaScript (ES6+)

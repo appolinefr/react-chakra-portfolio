@@ -32,10 +32,10 @@ export default function AbortionProject() {
   return (
     <SimpleGrid
       columns={{ base: 1, md: 2, lg: 2 }}
-      spacing={20}
+      spacing={{ sm: 8, md: 8, lg: 16 }}
       mb={{ base: 8, md: 12, lg: 16 }}
     >
-      <Stack spacing={4} justifyContent={"center"} backgroundColor={"gray.50"}>
+      <Stack spacing={4} justifyContent={"center"}>
         <Heading> {asl.name}</Heading>
         <Text color={"gray.500"} fontSize={"lg"}>
           {asl.description}
@@ -46,6 +46,8 @@ export default function AbortionProject() {
       </Stack>
       <Flex>
         <Image
+        opacity={0.2}
+        
           border={"solid"}
           alt={""}
           src={asl.image}

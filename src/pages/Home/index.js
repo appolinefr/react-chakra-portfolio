@@ -6,8 +6,8 @@ import HomeHero from "../../components/HomeHero";
 import Projects from "../../components/LatestProjects";
 import ContactForm from "../../components/Contact";
 import About from "../../components/About";
+import Footer from "../../components/Footer";
 
-;
 export default function Home() {
   const [isLargerThan1280] = useMediaQuery("(min-width: 1441px)");
   return (
@@ -26,6 +26,7 @@ export default function Home() {
           <About/>
           <Projects />
           <ContactForm />
+          <Footer/>
         </VStack>
       </Stack>
     </Box>

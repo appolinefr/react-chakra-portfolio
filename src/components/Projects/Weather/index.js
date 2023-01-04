@@ -32,7 +32,7 @@ export default function AbortionProject() {
   return (
     <SimpleGrid
       columns={{ base: 1, md: 2, lg: 2 }}
-      spacing={20}
+      spacing={{ sm: 8, md: 20 }}
       mb={{ base: 8, md: 12, lg: 16 }}
     >
       <Stack spacing={4} justifyContent={"center"} backgroundColor={"gray.50"}>

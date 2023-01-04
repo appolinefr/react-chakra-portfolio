@@ -15,18 +15,19 @@ import {
   DrawerBody,
   DrawerContent,
   DrawerCloseButton,
+  useColorMode,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 
-import { BsSun } from "react-icons/bs";
+import { BsSun, BsMoon } from "react-icons/bs";
 
 export default function NavBar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <Box >
+    <Box>
       <Flex
-        // as="header"
         minH={"80px"}
         py={{ base: 4 }}
         px={{ base: 6 }}
@@ -70,7 +71,8 @@ export default function NavBar() {
         </Flex>
         <Flex ml={{ base: -2 }} display={{ base: "flex", md: "flex" }}>
           <IconButton
-            icon={<BsSun w={6} h={6} />}
+            onClick={toggleColorMode}
+            icon={colorMode === 'light' ? <BsMoon/> : <BsSun w={6} h={6} />}
             color={"white"}
             variant={"ghost"}
             _hover={{

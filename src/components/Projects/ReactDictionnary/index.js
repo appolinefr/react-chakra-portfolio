@@ -25,12 +25,12 @@ export default function ReactDictionary() {
   return (
     <SimpleGrid
       columns={{ base: 1, md: 2, lg: 2 }}
-      spacing={20}
+      spacing={{ sm: 8, md: 20 }}
       my={{ base: 8, md: 12, lg: 16 }}
     >
       <Flex>
         <Image
-        border={"solid"}
+          border={"solid"}
           alt={""}
           src={dictionary.image}
           objectFit={"cover"}
