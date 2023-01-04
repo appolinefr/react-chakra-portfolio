@@ -29,7 +29,7 @@ export default function NavBar() {
   const btnRef = React.useRef();
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <Box>
+    <Box position="sticky" inset={0} zIndex="sticky">
       <Flex
         minH={"80px"}
         py={{ base: 4 }}
@@ -161,6 +161,7 @@ const MobileNav = () => {
 };
 
 const MobileNavItem = ({ label, href }) => {
+    const dark = useColorModeValue("gray.800", "white");
   return (
     <Stack spacing={4}>
       <Flex
@@ -169,11 +170,15 @@ const MobileNavItem = ({ label, href }) => {
         href={href ?? "#"}
         justify={"space-between"}
         align={"center"}
+        fontSize={"lg"}
+        fontWeight={500}
+        color={dark}
         _hover={{
           textDecoration: "none",
+          color: "pink.500",
         }}
-      >
-        <Text fontWeight={500}>{label}</Text>
+      
+        ><Text fontWeight={500}>{label}</Text>
       </Flex>
     </Stack>
   );

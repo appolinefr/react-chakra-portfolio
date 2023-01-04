@@ -3,16 +3,16 @@ import {
   Box,
   Text,
   Flex,
-  IconButton,
   Heading,
   Stack,
   Link,
   HStack,
+  IconButton,
   useColorModeValue,
 } from "@chakra-ui/react";
 
-import { ExternalLinkIcon } from "@chakra-ui/icons";
-import { BsGithub } from "react-icons/bs";
+import { BiLinkExternal } from "react-icons/bi";
+import { BsGithub, BsFolder } from "react-icons/bs";
 
 const projects = [
   {
@@ -32,7 +32,7 @@ const projects = [
   {
     name: "Work Day Scheduler",
     description:
-      "  Simple calendar application that allows a user to save events for each hour of the day. This app is running in the browser and feature dynamically updated HTML and CSS powered by jQuery.",
+      "  Simple calendar app that allows a user to save events for each hour of the day. This app is running in the browser and feature dynamically updated HTML and CSS powered by jQuery.",
     link: "https://github.com/appolinefr/Work-Day-Scheduler",
     tech: ["JS", "Bulma", "Wikipedia API", "HTML"],
   },
@@ -46,7 +46,7 @@ const projects = [
   {
     name: "Weather Dashboard",
     description:
-      "This weather dashboard runs in the browser and feature dynamically updated HTML and CSS. It uses OpenWeather One Call API to retrieve weather data for cities and store persistent data to localStorage.",
+      "This weather dashboard runs in the browser and feature dynamically updated HTML and CSS. It uses OpenWeather API to retrieve data and store persistent data to localStorage.",
     link: "https://github.com/appolinefr/Weather-Dashboard",
     tech: ["JS", "Bulma", "Wikipedia API", "HTML"],
   },
@@ -62,7 +62,7 @@ const projects = [
 export default function OtherProjects() {
   const dark = useColorModeValue("gray.800", "white");
   const grey = useColorModeValue("gray.600", "gray.400");
-  const button = useColorModeValue("white", "pink.500");
+  const button = useColorModeValue("pink.500", "white");
   const boxBg = useColorModeValue("white", "whiteAlpha.200");
 
   return (
@@ -76,6 +76,7 @@ export default function OtherProjects() {
           _hover={{
             transform: "translateY(-7px)",
           }}
+          boxShadow="xl"
           key={index}
           h={"100%"}
         >
@@ -86,8 +87,9 @@ export default function OtherProjects() {
             p={5}
             borderRadius="4px"
           >
-            <Flex justify={"flex-end"}>
-              <Link href={project.link} target="_blank">
+            <Flex justify={"flex-end"} color={"pink.500"} align={"center"}>
+              <BsFolder color={"pink.500"} size="34px" />
+              <Link href={project.link} ml={"auto"} target="_blank">
                 <IconButton
                   color={button}
                   aria-label="github"
@@ -95,6 +97,9 @@ export default function OtherProjects() {
                   size="lg"
                   fontSize="xl"
                   icon={<BsGithub />}
+                  _hover={{
+                    color: "pink.500",
+                  }}
                   isRound
                 />
               </Link>
@@ -104,8 +109,11 @@ export default function OtherProjects() {
                   aria-label="github"
                   variant="ghost"
                   size="lg"
-                  icon={<ExternalLinkIcon />}
-                  fontSize="xl"
+                  fontSize="2xl"
+                  icon={<BiLinkExternal />}
+                  _hover={{
+                    color: "pink.500",
+                  }}
                   isRound
                 />
               </Link>
@@ -116,7 +124,7 @@ export default function OtherProjects() {
             <Text color={grey}>{project.description}</Text>
             <HStack>
               {project.tech.map((type, index) => (
-                <Text key={index} color={dark}>
+                <Text key={index} fontSize={"sm"} color={dark}>
                   {type}
                 </Text>
               ))}
@@ -124,6 +132,7 @@ export default function OtherProjects() {
           </Stack>
         </Box>
       ))}
+  
     </SimpleGrid>
   );
 }

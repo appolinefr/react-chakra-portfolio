@@ -28,11 +28,7 @@ export default function Projects() {
   const button = useColorModeValue("white", "pink.400");
 
   return (
-    <Box
-      as={Container}
-      maxW="full"
-      p={isLargerThan1280 ? 8 : 4}
-    >
+    <Box as={Container} maxW="full" p={isLargerThan1280 ? 8 : 4}>
       <Flex alignItems={"center"}>
         <Heading
           id={"projects"}
@@ -55,23 +51,25 @@ export default function Projects() {
       <Collapse in={show}>
         <OtherProjects />
       </Collapse>
-      <Button
-        size="md"
-        onClick={handleToggle}
-        maxW={40}
-        color={button}
-        bg={buttonBg}
-        borderRadius="sm"
-        border={"solid"}
-        borderColor={"pink.400"}
-        p={6}
-        _hover={{
-          textDecoration: "none",
-          boxShadow: "0px 5px 10px rgba(236, 99, 166)",
-        }}
-      >
-        Show {show ? "Less" : "More"}
-      </Button>
+      <Flex justify={"center"}>
+        <Button
+          size="md"
+          onClick={handleToggle}
+          maxW={40}
+          color={button}
+          bg={buttonBg}
+          borderRadius="sm"
+          border={"solid"}
+          borderColor={"pink.400"}
+          p={6}
+          _hover={{
+            textDecoration: "none",
+            boxShadow: "0px 5px 10px rgba(236, 99, 166)",
+          }}
+        >
+          Show {show ? "Less" : "More"}
+        </Button>
+      </Flex>
     </Box>
   );
 }

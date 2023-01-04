@@ -36,7 +36,6 @@ const asl = {
 export default function AbortionProject() {
   const dark = useColorModeValue("gray.800", "white");
   const grey = useColorModeValue("gray.600", "gray.400");
-  const button = useColorModeValue("white", "pink.500");
   const boxBg = useColorModeValue("white", "whiteAlpha.200");
 
   return (
@@ -50,6 +49,7 @@ export default function AbortionProject() {
         backgroundColor={boxBg}
         p={5}
         borderRadius="4px"
+        boxShadow="xl"
       >
         <Text color={"pink.500"} fontSize={"lg"}>
           Featured project
@@ -73,7 +73,7 @@ export default function AbortionProject() {
               fontSize="xl"
               icon={<BsGithub />}
               _hover={{
-                color: button,
+                color: "pink.500",
               }}
               isRound
             />
@@ -87,23 +87,25 @@ export default function AbortionProject() {
               fontSize="xl"
               icon={<ExternalLinkIcon />}
               _hover={{
-                color: button,
+                color: "pink.500",
               }}
               isRound
             />
           </Link>
         </Flex>
       </Stack>
-      <Flex>
+      <Flex display={{ sm: "none", md: "block" }}>
         <Image
           alt={asl.name}
-          display={{ sm: "none", md: "block" }}
           src={asl.image}
           objectFit={"cover"}
           width={607}
           aspect-ratio={607 / 304}
           height={304}
           borderRadius={"md"}
+          _hover={{
+            transform: "translateX(-7px)",
+          }}
         />
       </Flex>
     </SimpleGrid>

@@ -51,6 +51,7 @@ export default function AbortionProject() {
         backgroundColor={boxBg}
         p={5}
         borderRadius="4px"
+        boxShadow="xl"
       >
         <Text color={"pink.500"} fontSize={"lg"}>
           Featured project
@@ -74,7 +75,7 @@ export default function AbortionProject() {
               fontSize="xl"
               icon={<BsGithub />}
               _hover={{
-                color: button,
+                color: "pink.500",
               }}
               isRound
             />
@@ -88,7 +89,7 @@ export default function AbortionProject() {
               fontSize="xl"
               icon={<ExternalLinkIcon />}
               _hover={{
-                color: button,
+                color: "pink.500",
               }}
               isRound
             />

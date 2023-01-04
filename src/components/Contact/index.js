@@ -11,8 +11,9 @@ import {
   Textarea,
   useColorModeValue,
   VStack,
-  Container,
-  Stack
+  Stack,
+  Button,
+  Flex,
 } from "@chakra-ui/react";
 
 import emailjs from "@emailjs/browser";
@@ -21,6 +22,13 @@ import { BsPerson } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
 
 export default function ContactForm() {
+  const dark = useColorModeValue("gray.800", "white");
+  const grey = useColorModeValue("gray.600", "gray.400");
+  const btn = useColorModeValue("white", "pink.500");
+  const focus = useColorModeValue("pink.500", "white");
+  const boxBg = useColorModeValue("white", "whiteAlpha.200");
+  const buttonBg = useColorModeValue("pink.400", "gray.800");
+
   const form = useRef();
   const [button, setButton] = useState("Send");
 
@@ -53,11 +61,11 @@ export default function ContactForm() {
           Get in Touch
         </Heading>
         <Box
-          bg={useColorModeValue("white", "gray.700")}
+          bg={boxBg}
           borderRadius="lg"
           p={8}
           color={useColorModeValue("gray.700", "whiteAlpha.900")}
-          shadow="base"
+          boxShadow="0px 2px 14px rgba(236, 99, 166)"
           w={{ base: "sm", md: "md", lg: "lg" }}
         >
           <VStack spacing={5}>
@@ -71,7 +79,7 @@ export default function ContactForm() {
                   placeholder="Your Name"
                   size="md"
                   type="name"
-                  focusBorderColor="#FF5677"
+                  focusBorderColor={focus}
                 />
               </InputGroup>
               <FormLabel>Email</FormLabel>
@@ -83,7 +91,7 @@ export default function ContactForm() {
                   placeholder="Your Email"
                   name="user_email"
                   size="md"
-                  focusBorderColor="#FF5677"
+                  focusBorderColor={focus}
                 />
               </InputGroup>
               <FormLabel>Message</FormLabel>
@@ -93,25 +101,28 @@ export default function ContactForm() {
                 placeholder="Your Message"
                 name="user_message"
                 rows={6}
-                focusBorderColor="#FF5677"
+                focusBorderColor={focus}
               />
-              <Input
-                mt={4}
-                fontWeight={600}
-                type={"submit"}
-                value={button}
-                maxW={40}
-                color="white"
-                bg={"pink.400"}
-                rounded={"full"}
-                px={6}
-                _hover={{
-                  bg: "white",
-                  color: "pink.400",
-                  borderColor: "pink.400",
-                  cursor: "pointer",
-                }}
-              />
+              <Flex justify={"center"}>
+                <Button
+                  mt={6}
+                  maxW={40}
+                  color={btn}
+                  bg={buttonBg}
+                  borderRadius="sm"
+                  border={"solid"}
+                  borderColor={"pink.400"}
+                  p={6}
+                  type={"submit"}
+                  value={button}
+                  _hover={{
+                    textDecoration: "none",
+                    boxShadow: "0px 5px 10px rgba(236, 99, 166)",
+                  }}
+                >
+                  Send
+                </Button>
+              </Flex>
             </form>
           </VStack>
         </Box>
