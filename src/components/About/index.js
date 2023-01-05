@@ -37,6 +37,7 @@ export default function AboutAuthor() {
       <Flex alignItems={"center"}>
         <Heading
           id={"about"}
+          className="element"
           color={dark}
           fontWeight={600}
           lineHeight={"110%"}

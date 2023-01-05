@@ -2,6 +2,7 @@ import {
   SimpleGrid,
   Text,
   Image,
+  Box,
   Flex,
   Heading,
   Stack,
@@ -36,7 +37,6 @@ const asl = {
 export default function AbortionProject() {
   const dark = useColorModeValue("gray.800", "white");
   const grey = useColorModeValue("gray.600", "gray.400");
-  const button = useColorModeValue("white", "pink.500");
   const boxBg = useColorModeValue("white", "whiteAlpha.200");
 
   return (
@@ -45,69 +45,80 @@ export default function AbortionProject() {
       spacing={{ sm: 4, md: 8, lg: 16 }}
       my={{ base: 4, md: 12, lg: 16 }}
     >
-      <Stack
-        spacing={4}
-        justifyContent={"center"}
-        backgroundColor={boxBg}
-        p={5}
-        borderRadius="4px"
-        boxShadow="xl"
-      >
-        <Text color={"pink.500"} fontSize={"lg"}>
-          Featured project
-        </Text>
-        <Heading color={dark} fontSize={"30px"}>
-          {asl.name}
-        </Heading>
-        <Text color={grey} fontSize={"lg"}>
-          {asl.description}
-        </Text>
-        <List>
-          <ListItem color={dark}>{asl.tech}</ListItem>
-        </List>
-        <Flex justify={"flex-start"}>
-          <Link href={asl.link} target="_blank">
-            <IconButton
-              color={dark}
-              aria-label="github"
-              variant="ghost"
-              size="lg"
-              fontSize="xl"
-              icon={<BsGithub />}
-              _hover={{
-                color: "pink.500",
-              }}
-              isRound
-            />
-          </Link>
-          <Link href={asl.link} target="_blank">
-            <IconButton
-              color={dark}
-              aria-label="github"
-              variant="ghost"
-              size="lg"
-              fontSize="xl"
-              icon={<ExternalLinkIcon />}
-              _hover={{
-                color: "pink.500",
-              }}
-              isRound
-            />
-          </Link>
-        </Flex>
-      </Stack>
-      <Flex>
+      <Box alignSelf={"center"}>
+        <Stack
+          position={"relative"}
+          zIndex={1}
+          spacing={4}
+          justifyContent={"center"}
+          backgroundColor={boxBg}
+          p={5}
+          borderRadius="4px"
+          boxShadow="xl"
+        >
+          <Text color={"pink.500"} fontSize={"lg"}>
+            Featured project
+          </Text>
+          <Heading color={dark} fontSize={"30px"}>
+            {asl.name}
+          </Heading>
+          <Text color={grey} fontSize={"lg"}>
+            {asl.description}
+          </Text>
+          <List>
+            <ListItem color={dark}>{asl.tech}</ListItem>
+          </List>
+          <Flex justify={"flex-start"}>
+            <Link href={asl.link} target="_blank">
+              <IconButton
+                color={dark}
+                aria-label="github"
+                variant="ghost"
+                size="lg"
+                fontSize="xl"
+                icon={<BsGithub />}
+                _hover={{
+                  color: "pink.500",
+                }}
+                isRound
+              />
+            </Link>
+            <Link href={asl.link} target="_blank">
+              <IconButton
+                color={dark}
+                aria-label="github"
+                variant="ghost"
+                size="lg"
+                fontSize="xl"
+                icon={<ExternalLinkIcon />}
+                _hover={{
+                  color: "pink.500",
+                }}
+                isRound
+              />
+            </Link>
+          </Flex>
+        </Stack>
+      </Box>
+      <Box>
         <Image
-          alt={asl.name}
+          opacity={0.7}
           display={{ sm: "none", md: "block" }}
+          ml={{ md: -100, lg: -100, xl: -160 }}
+          alt={asl.name}
           src={asl.image}
-          objectFit={"cover"}
-          width={607}
-          aspect-ratio={607 / 304}
-          height={304}
+          // objectFit={"cover"}
+          width={707}
+          aspect-ratio={707 / 404}
+          height={404}
           borderRadius={"md"}
+          _hover={{
+            transform: "translateX(40px)",
+            opacity: 1,
+            cursor: "pointer",
+          }}
         />
-      </Flex>
+      </Box>
     </SimpleGrid>
   );
 }

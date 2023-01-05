@@ -5,9 +5,6 @@ import {
   Text,
   IconButton,
   Stack,
-  Link,
-  Popover,
-  PopoverTrigger,
   useBreakpointValue,
   useDisclosure,
   Drawer,
@@ -21,6 +18,8 @@ import {
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { BsSun, BsMoon } from "react-icons/bs";
 
+import { Link, animateScroll as scroll } from "react-scroll";
+
 export default function NavBar() {
   const dark = useColorModeValue("gray.800", "white");
   const light = useColorModeValue("white", "gray.800");
@@ -28,6 +27,7 @@ export default function NavBar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
   const { colorMode, toggleColorMode } = useColorMode();
+
   return (
     <Box position="sticky" inset={0} zIndex="sticky">
       <Flex
@@ -38,8 +38,8 @@ export default function NavBar() {
         backgroundColor={light}
       >
         <Flex flex={{ base: 1 }} justify={{ md: "start" }}>
-          <Link
-            href={"/"}
+          <Text
+            onClick={() => scroll.scrollToTop()}
             textAlign={useBreakpointValue({ md: "left" })}
             fontFamily={"heading"}
             color={dark}
@@ -49,10 +49,11 @@ export default function NavBar() {
             _hover={{
               textDecoration: "none",
               color: "pink.500",
+              cursor: "pointer",
             }}
           >
             AC
-          </Link>
+          </Text>
         </Flex>
         <Flex>
           <Flex display={{ base: "none", md: "flex" }} mr={6}>
@@ -105,15 +106,15 @@ export default function NavBar() {
 const NAV_ITEMS = [
   {
     label: "About",
-    href: "#about",
+    href: "about",
   },
   {
     label: "Projects",
-    href: "#projects",
+    href: "projects",
   },
   {
     label: "Contact",
-    href: "#contact",
+    href: "contact",
   },
   {
     label: "Resume",
@@ -124,27 +125,28 @@ const DesktopNav = () => {
   const dark = useColorModeValue("gray.800", "white");
 
   return (
-    <Stack direction={"row"} spacing={2}>
+    <Stack direction={"row"} spacing={6}>
       {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label}>
-          <Popover trigger={"hover"} placement={"bottom-start"}>
-            <PopoverTrigger>
-              <Link
-                p={2}
-                href={navItem.href ?? "#"}
-                fontSize={"lg"}
-                fontWeight={500}
-                color={dark}
-                _hover={{
-                  textDecoration: "none",
-                  color: "pink.500",
-                }}
-              >
-                {navItem.label}
-              </Link>
-            </PopoverTrigger>
-          </Popover>
-        </Box>
+        <Flex
+          key={navItem.label}
+          py={2}
+          as={Link}
+          to={navItem.href}
+          smooth={true}
+          transition={1000}
+          justify={"space-between"}
+          align={"center"}
+          fontSize={"lg"}
+          fontWeight={500}
+          color={dark}
+          _hover={{
+            textDecoration: "none",
+            color: "pink.500",
+            cursor: "pointer",
+          }}
+        >
+          {navItem.label}
+        </Flex>
       ))}
     </Stack>
   );
@@ -161,13 +163,13 @@ const MobileNav = () => {
 };
 
 const MobileNavItem = ({ label, href }) => {
-    const dark = useColorModeValue("gray.800", "white");
+  const dark = useColorModeValue("gray.800", "white");
   return (
     <Stack spacing={4}>
       <Flex
         py={2}
         as={Link}
-        href={href ?? "#"}
+        to={href}
         justify={"space-between"}
         align={"center"}
         fontSize={"lg"}
@@ -176,9 +178,10 @@ const MobileNavItem = ({ label, href }) => {
         _hover={{
           textDecoration: "none",
           color: "pink.500",
+          cursor: "pointer",
         }}
-      
-        ><Text fontWeight={500}>{label}</Text>
+      >
+        <Text fontWeight={500}>{label}</Text>
       </Flex>
     </Stack>
   );

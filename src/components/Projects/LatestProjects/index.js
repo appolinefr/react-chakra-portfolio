@@ -7,21 +7,21 @@ import {
   Divider,
   Button,
   Collapse,
-  useColorModeValue
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 import { useMediaQuery } from "@chakra-ui/react";
 
-import Abortion from "../Projects/AbortionSavesLives";
-import Dictionary from "../Projects/ReactDictionnary";
-import Weather from "../Projects/Weather";
-import OtherProjects from "../Projects/OtherProjects";
+import Abortion from "../AbortionSavesLives";
+import Dictionary from "../ReactDictionnary";
+import Weather from "../Weather";
+import OtherProjects from "../OtherProjects";
 
 export default function Projects() {
   const [isLargerThan1280] = useMediaQuery("(min-width: 1441px)");
   const [show, setShow] = React.useState(false);
   const handleToggle = () => setShow(!show);
-  
+
   const dark = useColorModeValue("gray.800", "white");
   const grey = useColorModeValue("gray.600", "gray.400");
   const buttonBg = useColorModeValue("pink.400", "gray.800");

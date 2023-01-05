@@ -6,17 +6,19 @@ import {
   useColorModeValue,
   useClipboard,
   Tooltip,
+  useMediaQuery,
 } from "@chakra-ui/react";
-
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 
 export default function Socials() {
+  const [isLargerThan1280] = useMediaQuery("(min-width: 1441px)");
   const { hasCopied, onCopy } = useClipboard("appolinecogan@gmail.com");
+
   return (
     <Stack
       align="center"
-      mt={150}
+      mt={isLargerThan1280 ? 250 : 150}
       spacing={5}
       direction={{ md: "column" }}
       display={{ base: "none", md: "flex" }}
@@ -71,7 +73,7 @@ export default function Socials() {
           isRound
         />
       </Link>
-      <Divider orientation="vertical" h="200px" borderColor={"pink"} />
+      <Divider orientation="vertical" h={isLargerThan1280 ? "360px" : "200px"} borderColor={"pink"} />
     </Stack>
   );
 }

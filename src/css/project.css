@@ -1,0 +1,9 @@
+.projectImage {
+  background-image: url("https://images.pexels.com/photos/14810603/pexels-photo-14810603.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load")!important;
+
+  height: 100%;
+  width: 100%;
+
+  background-position: center;
+  background-size: cover;
+}
