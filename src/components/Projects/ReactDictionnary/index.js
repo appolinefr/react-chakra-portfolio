@@ -30,8 +30,7 @@ const dictionary = {
 export default function ReactDictionary() {
   const dark = useColorModeValue("gray.800", "white");
   const grey = useColorModeValue("gray.600", "gray.400");
-  const button = useColorModeValue("white", "pink.500");
-  const boxBg = useColorModeValue("white", "whiteAlpha.200");
+  const boxBg = useColorModeValue("white", "gray.800");
 
   return (
     <SimpleGrid

@@ -18,7 +18,7 @@ export default function Socials() {
   return (
     <Stack
       align="center"
-      mt={isLargerThan1280 ? 250 : 150}
+      mt={isLargerThan1280 ? 250 : 200}
       spacing={5}
       direction={{ md: "column" }}
       display={{ base: "none", md: "flex" }}
@@ -73,7 +73,11 @@ export default function Socials() {
           isRound
         />
       </Link>
-      <Divider orientation="vertical" h={isLargerThan1280 ? "360px" : "200px"} borderColor={"pink"} />
+      <Divider
+        orientation="vertical"
+        h={isLargerThan1280 ? "360px" : "250px"}
+        borderColor={"pink"}
+      />
     </Stack>
   );
 }

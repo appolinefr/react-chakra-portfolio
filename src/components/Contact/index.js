@@ -14,6 +14,7 @@ import {
   Stack,
   Button,
   Flex,
+  useColorMode,
 } from "@chakra-ui/react";
 
 import emailjs from "@emailjs/browser";
@@ -22,13 +23,12 @@ import { BsPerson } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
 
 export default function ContactForm() {
-  const dark = useColorModeValue("gray.800", "white");
   const grey = useColorModeValue("gray.600", "gray.400");
   const btn = useColorModeValue("white", "pink.500");
   const focus = useColorModeValue("pink.500", "white");
-  const boxBg = useColorModeValue("white", "whiteAlpha.200");
+  const boxBg = useColorModeValue("white", "gray.800");
   const buttonBg = useColorModeValue("pink.400", "gray.800");
-
+  const { colorMode } = useColorMode();
   const form = useRef();
   const [button, setButton] = useState("Send");
 
@@ -65,7 +65,11 @@ export default function ContactForm() {
           borderRadius="lg"
           p={8}
           color={useColorModeValue("gray.700", "whiteAlpha.900")}
-          boxShadow="0px 2px 14px rgba(236, 99, 166)"
+          boxShadow={
+            colorMode === "light"
+              ? `0px 1px 12px rgba(236, 99, 166)`
+              : `0px 1px 12px white`
+          }
           w={{ base: "sm", md: "md", lg: "lg" }}
         >
           <VStack spacing={5}>
@@ -74,6 +78,8 @@ export default function ContactForm() {
               <InputGroup mb={2}>
                 <InputLeftElement children={<BsPerson />} />
                 <Input
+                  color={grey}
+                  _placeholder={{ color: "inherit" }}
                   required
                   name="user_name"
                   placeholder="Your Name"
@@ -86,6 +92,8 @@ export default function ContactForm() {
               <InputGroup my={2}>
                 <InputLeftElement children={<MdOutlineEmail />} />
                 <Input
+                  color={grey}
+                  _placeholder={{ color: "inherit" }}
                   required
                   type="email"
                   placeholder="Your Email"
@@ -96,6 +104,8 @@ export default function ContactForm() {
               </InputGroup>
               <FormLabel>Message</FormLabel>
               <Textarea
+                color={grey}
+                _placeholder={{ color: "inherit" }}
                 required
                 type="email"
                 placeholder="Your Message"

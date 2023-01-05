@@ -18,6 +18,8 @@ import {
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { BsSun, BsMoon } from "react-icons/bs";
 
+import AppolinesResume from "../../pdf/AppolinesResume.pdf";
+
 import { Link, animateScroll as scroll } from "react-scroll";
 
 export default function NavBar() {
@@ -27,6 +29,18 @@ export default function NavBar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
   const { colorMode, toggleColorMode } = useColorMode();
+
+  const onButtonClick = () => {
+    fetch(AppolinesResume).then((response) => {
+      response.blob().then((blob) => {
+        const fileURL = window.URL.createObjectURL(blob);
+        let alink = document.createElement("a");
+        alink.href = fileURL;
+        alink.download = AppolinesResume;
+        alink.click();
+      });
+    });
+  };
 
   return (
     <Box position="sticky" inset={0} zIndex="sticky">
@@ -56,8 +70,32 @@ export default function NavBar() {
           </Text>
         </Flex>
         <Flex>
-          <Flex display={{ base: "none", md: "flex" }} mr={6}>
+          <Flex
+            display={{ base: "none", md: "flex" }}
+            align={"center"}
+            spacing={6}
+            mr={6}
+          >
             <DesktopNav />
+            <Text
+              ml={6}
+              id="downloadBtn"
+              value="download"
+              onClick={onButtonClick}
+              py={2}
+              justify={"space-between"}
+              align={"center"}
+              fontSize={"lg"}
+              fontWeight={500}
+              color={dark}
+              _hover={{
+                textDecoration: "none",
+                color: "pink.500",
+                cursor: "pointer",
+              }}
+            >
+              Resume
+            </Text>
           </Flex>
         </Flex>
         <Flex ml={{ base: -2 }} display={{ base: "flex", md: "none" }}>
@@ -116,9 +154,6 @@ const NAV_ITEMS = [
     label: "Contact",
     href: "contact",
   },
-  {
-    label: "Resume",
-  },
 ];
 
 const DesktopNav = () => {
@@ -153,11 +188,43 @@ const DesktopNav = () => {
 };
 
 const MobileNav = () => {
+    const dark = useColorModeValue("gray.800", "white");
+     const onButtonClick = () => {
+       fetch(AppolinesResume).then((response) => {
+         response.blob().then((blob) => {
+           const fileURL = window.URL.createObjectURL(blob);
+           let alink = document.createElement("a");
+           alink.href = fileURL;
+           alink.download = AppolinesResume;
+           alink.click();
+         });
+       });
+     };
+
   return (
     <Stack p={4} display={{ md: "none" }}>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
+      <Text
+      
+        ml={6}
+        id="downloadBtn"
+        value="download"
+        onClick={onButtonClick}
+        py={2}
+   
+        fontSize={"lg"}
+        fontWeight={500}
+        color={dark}
+        _hover={{
+          textDecoration: "none",
+          color: "pink.500",
+          cursor: "pointer",
+        }}
+      >
+        Resume
+      </Text>
     </Stack>
   );
 };

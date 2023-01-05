@@ -37,7 +37,7 @@ const asl = {
 export default function AbortionProject() {
   const dark = useColorModeValue("gray.800", "white");
   const grey = useColorModeValue("gray.600", "gray.400");
-  const boxBg = useColorModeValue("white", "whiteAlpha.200");
+  const boxBg = useColorModeValue("white", "gray.800");
 
   return (
     <SimpleGrid
