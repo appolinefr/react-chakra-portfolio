@@ -14,6 +14,7 @@ import {
   Stack,
   Button,
   Flex,
+  Text,
   useColorMode,
 } from "@chakra-ui/react";
 
@@ -24,10 +25,12 @@ import { MdOutlineEmail } from "react-icons/md";
 
 export default function ContactForm() {
   const grey = useColorModeValue("gray.600", "gray.400");
-  const btn = useColorModeValue("white", "pink.500");
   const focus = useColorModeValue("pink.500", "white");
   const boxBg = useColorModeValue("white", "gray.800");
-  const buttonBg = useColorModeValue("pink.400", "gray.800");
+  const buttonBg = useColorModeValue("pink.500", "gray.800");
+  const buttonText = useColorModeValue("white", "pink.400");
+  const buttonBorder = useColorModeValue("pink.500", "pink.400");
+
   const { colorMode } = useColorMode();
   const form = useRef();
   const [button, setButton] = useState("Send");
@@ -49,10 +52,9 @@ export default function ContactForm() {
   };
 
   return (
-    <Box as={Center} maxW="full" my={{ base: 4, md: 12, lg: 16 }}>
+    <Box as={Center} maxW="full" my={{ base: 4, md: 12, lg: 16 }} id="contact">
       <Stack>
         <Heading
-          id="contact"
           as={Center}
           fontWeight={600}
           lineHeight={"110%"}
@@ -60,7 +62,19 @@ export default function ContactForm() {
         >
           Get in Touch
         </Heading>
+        <Text
+          lineHeight={"110%"}
+          fontSize={"lg"}
+          color={grey}
+          pb={{ base: 8, md: 12 }}
+          align={"center"}
+          maxW={"xl"}
+        >
+          Whether you have a question or just want to say hi, you can email me
+          or leave a message below.
+        </Text>
         <Box
+          alignSelf={"center"}
           bg={boxBg}
           borderRadius="lg"
           p={8}
@@ -115,22 +129,31 @@ export default function ContactForm() {
               />
               <Flex justify={"center"}>
                 <Button
-                  mt={6}
-                  maxW={40}
-                  color={btn}
-                  bg={buttonBg}
-                  borderRadius="sm"
-                  border={"solid"}
-                  borderColor={"pink.400"}
-                  p={6}
                   type={"submit"}
-                  value={button}
+                  mt={6}
+                  p={6}
+                  maxW={40}
+                  borderRadius="md"
+                  fontSize={"lg"}
+                  fontWeight={500}
+                  color={buttonText}
+                  bg={buttonBg}
+                  border={"solid"}
+                  borderColor={buttonBorder}
                   _hover={{
+                    cursor: "pointer",
                     textDecoration: "none",
-                    boxShadow: "0px 5px 10px rgba(236, 99, 166)",
+                    bg: buttonBg,
+                    boxShadow: `0px 1px 12px rgba(236, 99, 166)`,
+                  }}
+                  _active={{
+                    cursor: "pointer",
+                    textDecoration: "none",
+                    bg: buttonBg,
+                    boxShadow: `0px 1px 12px rgba(236, 99, 166)`,
                   }}
                 >
-                  Send
+                  {button}
                 </Button>
               </Flex>
             </form>

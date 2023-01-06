@@ -23,6 +23,7 @@ const asl = {
   description:
     "The abortion saves lives app will allow South Australian people to look for abortion providers in their state and to give testimonials about their experience to help others make the decision on where to have their procedure.",
   link: "https://abortion-saves-lives.herokuapp.com/",
+  github: "",
   image: Abortion,
   tech: [
     "React ",
@@ -36,14 +37,15 @@ const asl = {
 
 export default function AbortionProject() {
   const dark = useColorModeValue("gray.800", "white");
-  const grey = useColorModeValue("gray.600", "gray.400");
-  const boxBg = useColorModeValue("white", "gray.800");
+  const grey = useColorModeValue("gray.600", "gray.300");
+  const boxBg = useColorModeValue("white", "gray.700");
+  const pink = useColorModeValue("pink.500", "pink.400");
 
   return (
     <SimpleGrid
       columns={{ base: 1, md: 2, lg: 2 }}
       spacing={{ sm: 4, md: 8, lg: 16 }}
-      mb={{ base:-4, md: 0 }}
+      mb={{ base: -5, md: 0 }}
     >
       <Box alignSelf={"center"}>
         <Stack
@@ -53,10 +55,10 @@ export default function AbortionProject() {
           justifyContent={"center"}
           backgroundColor={boxBg}
           p={5}
-          borderRadius="4px"
+          borderRadius="md"
           boxShadow="xl"
         >
-          <Text color={"pink.500"} fontSize={"lg"}>
+          <Text color={pink} fontSize={"lg"}>
             Featured project
           </Text>
           <Heading color={dark} fontSize={"30px"}>
@@ -79,6 +81,11 @@ export default function AbortionProject() {
                 icon={<BsGithub />}
                 _hover={{
                   color: "pink.500",
+                  bg: boxBg,
+                }}
+                _active={{
+                  color: "pink.500",
+                  bg: boxBg,
                 }}
                 isRound
               />
@@ -93,6 +100,11 @@ export default function AbortionProject() {
                 icon={<ExternalLinkIcon />}
                 _hover={{
                   color: "pink.500",
+                  bg: boxBg,
+                }}
+                _active={{
+                  color: "pink.500",
+                  bg: boxBg,
                 }}
                 isRound
               />
@@ -100,20 +112,20 @@ export default function AbortionProject() {
           </Flex>
         </Stack>
       </Box>
-      <Box>
+      <Box as={Link} href={asl.link}>
         <Image
           opacity={0.7}
           display={{ sm: "none", md: "block" }}
           ml={{ md: -100, lg: -100, xl: -160 }}
           alt={asl.name}
           src={asl.image}
-          // objectFit={"cover"}
           width={707}
           aspect-ratio={707 / 404}
           height={404}
           borderRadius={"md"}
           _hover={{
             transform: "translateX(50px)",
+            transition: " all 1s ease-in-out",
             opacity: 1,
             cursor: "pointer",
           }}

@@ -22,10 +22,9 @@ export default function Projects() {
   const [show, setShow] = React.useState(false);
   const handleToggle = () => setShow(!show);
 
-  const dark = useColorModeValue("gray.800", "white");
-  const grey = useColorModeValue("gray.600", "gray.400");
-  const buttonBg = useColorModeValue("pink.400", "gray.800");
-  const button = useColorModeValue("white", "pink.400");
+  const buttonBg = useColorModeValue("pink.500", "gray.800");
+  const buttonText = useColorModeValue("white", "pink.400");
+  const buttonBorder = useColorModeValue("pink.500", "pink.400");
 
   return (
     <Box as={Container} maxW="full" p={isLargerThan1280 ? 8 : 4}>
@@ -53,18 +52,25 @@ export default function Projects() {
       </Collapse>
       <Flex justify={"center"}>
         <Button
-          size="md"
+          fontSize={"lg"}
+          fontWeight={500}
           onClick={handleToggle}
           maxW={40}
-          color={button}
+          color={buttonText}
           bg={buttonBg}
-          borderRadius="sm"
+          borderRadius="md"
           border={"solid"}
-          borderColor={"pink.400"}
+          borderColor={buttonBorder}
           p={6}
           _hover={{
+            cursor: "pointer",
             textDecoration: "none",
-            boxShadow: "0px 5px 10px rgba(236, 99, 166)",
+            boxShadow: `0px 1px 12px rgba(236, 99, 166)`,
+          }}
+          _active={{
+            cursor: "pointer",
+            textDecoration: "none",
+            boxShadow: `0px 1px 12px rgba(236, 99, 166)`,
           }}
         >
           Show {show ? "Less" : "More"}

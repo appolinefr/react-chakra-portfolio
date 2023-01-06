@@ -5,15 +5,17 @@ import {
   Stack,
   Box,
   Container,
-  Link,
   useColorModeValue,
 } from "@chakra-ui/react";
+
+import { Link } from "react-scroll";
 
 export default function HomeHero() {
   const dark = useColorModeValue("gray.800", "white");
   const grey = useColorModeValue("gray.600", "gray.400");
-  const buttonBg = useColorModeValue("pink.400", "gray.800");
-  const button = useColorModeValue("white", "pink.400");
+  const buttonBg = useColorModeValue("pink.500", "gray.800");
+  const buttonText = useColorModeValue("white", "pink.400");
+  const buttonBorder = useColorModeValue("pink.500", "pink.400");
 
   return (
     <Box as={Container} maxW="full" my={{ base: 4, md: 12, lg: 16 }}>
@@ -44,18 +46,28 @@ export default function HomeHero() {
           attention to detail.
         </Text>
         <Button
+          fontSize={"lg"}
+          fontWeight={500}
           as={Link}
-          href={"#contact"}
+          to={"contact"}
+          smooth={true}
+          transition={1000}
           maxW={40}
-          color={button}
+          color={buttonText}
           bg={buttonBg}
-          borderRadius="sm"
+          borderRadius="md"
           border={"solid"}
-          borderColor={"pink.400"}
+          borderColor={buttonBorder}
           p={6}
           _hover={{
+            cursor: "pointer",
             textDecoration: "none",
-            boxShadow: "0px 5px 10px rgba(236, 99, 166)",
+            boxShadow: `0px 1px 12px rgba(236, 99, 166)`,
+          }}
+          _active={{
+            cursor: "pointer",
+            textDecoration: "none",
+            boxShadow: `0px 1px 12px rgba(236, 99, 166)`,
           }}
         >
           Contact me!

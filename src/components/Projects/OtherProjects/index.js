@@ -61,9 +61,11 @@ const projects = [
 
 export default function OtherProjects() {
   const dark = useColorModeValue("gray.800", "white");
-  const grey = useColorModeValue("gray.600", "gray.400");
-  const button = useColorModeValue("pink.500", "white");
-  const boxBg = useColorModeValue("white", "whiteAlpha.200");
+  const list = useColorModeValue("pink.500", "white");
+  const pink = useColorModeValue("pink.500", "pink.400");
+  const button = useColorModeValue("gray.800", "white");
+  const grey = useColorModeValue("gray.600", "gray.300");
+  const boxBg = useColorModeValue("white", "gray.700");
 
   return (
     <SimpleGrid
@@ -75,6 +77,7 @@ export default function OtherProjects() {
         <Box
           _hover={{
             transform: "translateY(-7px)",
+            transition: " all 0.2s ease-in-out",
           }}
           boxShadow="xl"
           key={index}
@@ -87,8 +90,8 @@ export default function OtherProjects() {
             p={5}
             borderRadius="4px"
           >
-            <Flex justify={"flex-end"} color={"pink.500"} align={"center"}>
-              <BsFolder color={"pink.500"} size="34px" />
+            <Flex justify={"flex-end"} color={pink} align={"center"}>
+              <BsFolder size="34px" />
               <Link href={project.link} ml={"auto"} target="_blank">
                 <IconButton
                   color={button}
@@ -98,8 +101,9 @@ export default function OtherProjects() {
                   fontSize="xl"
                   icon={<BsGithub />}
                   _hover={{
-                    color: "pink.500",
+                    color: pink,
                   }}
+                  _active={{ color: pink }}
                   isRound
                 />
               </Link>
@@ -112,8 +116,10 @@ export default function OtherProjects() {
                   fontSize="2xl"
                   icon={<BiLinkExternal />}
                   _hover={{
-                    color: "pink.500",
+                    color: pink,
+                    
                   }}
+                  _active={{ color: pink }}
                   isRound
                 />
               </Link>
@@ -124,7 +130,7 @@ export default function OtherProjects() {
             <Text color={grey}>{project.description}</Text>
             <HStack>
               {project.tech.map((type, index) => (
-                <Text key={index} fontSize={"sm"} color={dark}>
+                <Text key={index} fontSize={"sm"} color={list}>
                   {type}
                 </Text>
               ))}
@@ -132,7 +138,6 @@ export default function OtherProjects() {
           </Stack>
         </Box>
       ))}
-  
     </SimpleGrid>
   );
 }

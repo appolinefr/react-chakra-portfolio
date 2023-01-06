@@ -8,12 +8,16 @@ import {
   Tooltip,
   useMediaQuery,
 } from "@chakra-ui/react";
+
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 
 export default function Socials() {
   const [isLargerThan1280] = useMediaQuery("(min-width: 1441px)");
   const { hasCopied, onCopy } = useClipboard("appolinecogan@gmail.com");
+  const pink = useColorModeValue("pink.500", "pink.400");
+   const lightPink = useColorModeValue("pink.500", "pink");
+  const button = useColorModeValue("gray.800", "white");
 
   return (
     <Stack
@@ -30,30 +34,38 @@ export default function Socials() {
         hasArrow
       >
         <IconButton
+          color={button}
           aria-label="email"
           variant="ghost"
           size="lg"
           fontSize="2xl"
           icon={<MdEmail />}
           _hover={{
-            bg: "pink.500",
-            color: useColorModeValue("white", "gray.700"),
+            color: "white",
+            bg: pink,
+            transition: " all 0.3s ease-in-out",
+            transform: "translateY(-4px)",
           }}
+          _active={{ color: "white", bg: pink }}
           onClick={onCopy}
           isRound
         />
       </Tooltip>
       <Link href="https://github.com/appolinefr" target="_blank">
         <IconButton
-          aria-label="github"
+          color={button}
+          aria-label="Github"
           variant="ghost"
           size="lg"
           fontSize="2xl"
           icon={<BsGithub />}
           _hover={{
-            bg: "pink.500",
-            color: useColorModeValue("white", "gray.700"),
+            color: "white",
+            bg: pink,
+            transition: " all 0.3s ease-in-out",
+            transform: "translateY(-4px)",
           }}
+          _active={{ color: "white", bg: pink }}
           isRound
         />
       </Link>
@@ -62,21 +74,26 @@ export default function Socials() {
         target="_blank"
       >
         <IconButton
-          aria-label="linkedin"
+          color={button}
+          aria-label="Linkedin"
           variant="ghost"
           size="lg"
-          icon={<BsLinkedin size="20px" />}
+          fontSize="2xl"
+          icon={<BsLinkedin />}
           _hover={{
-            bg: "pink.500",
-            color: useColorModeValue("white", "gray.700"),
+            color: "white",
+            bg: pink,
+            transition: " all 0.3s ease-in-out",
+            transform: "translateY(-4px)",
           }}
+          _active={{ color: "white", bg: pink }}
           isRound
         />
       </Link>
       <Divider
         orientation="vertical"
         h={isLargerThan1280 ? "360px" : "250px"}
-        borderColor={"pink"}
+        borderColor={lightPink}
       />
     </Stack>
   );

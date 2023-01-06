@@ -4,6 +4,7 @@ import {
   Flex,
   Text,
   IconButton,
+  Button,
   Stack,
   useBreakpointValue,
   useDisclosure,
@@ -14,6 +15,7 @@ import {
   DrawerCloseButton,
   useColorMode,
   useColorModeValue,
+  Heading,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { BsSun, BsMoon } from "react-icons/bs";
@@ -25,6 +27,10 @@ import { Link, animateScroll as scroll } from "react-scroll";
 export default function NavBar() {
   const dark = useColorModeValue("gray.800", "white");
   const light = useColorModeValue("white", "gray.800");
+  const buttonBg = useColorModeValue("pink.500", "gray.800");
+  const buttonText = useColorModeValue("white", "pink.400");
+  const buttonBorder = useColorModeValue("pink.500", "pink.400");
+  const pink = useColorModeValue("pink.500", "pink.400");
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
@@ -52,14 +58,15 @@ export default function NavBar() {
         backgroundColor={light}
       >
         <Flex flex={{ base: 1 }} justify={{ md: "start" }}>
-          <Text
+          <Heading
             onClick={() => scroll.scrollToTop()}
             textAlign={useBreakpointValue({ md: "left" })}
-            fontFamily={"heading"}
             color={dark}
-            fontSize={{ sm: "xl", md: "xl", lg: "2xl" }}
-            fontWeight={300}
-            mr={1}
+            fontSize={{ base: "2xl", xl: "3xl" }}
+            fontWeight={500}
+            lineHeight={"110%"}
+            p={2}
+            mx={2}
             _hover={{
               textDecoration: "none",
               color: "pink.500",
@@ -67,7 +74,7 @@ export default function NavBar() {
             }}
           >
             AC
-          </Text>
+          </Heading>
         </Flex>
         <Flex>
           <Flex
@@ -78,20 +85,30 @@ export default function NavBar() {
           >
             <DesktopNav />
             <Text
-              ml={6}
+              as={Button}
+              maxW={"100px"}
               id="downloadBtn"
               value="download"
               onClick={onButtonClick}
-              py={2}
-              justify={"space-between"}
-              align={"center"}
+              py={4}
+              ml={6}
               fontSize={"lg"}
               fontWeight={500}
-              color={dark}
+              color={buttonText}
+              bg={buttonBg}
+              border={"solid"}
+              borderColor={buttonBorder}
               _hover={{
-                textDecoration: "none",
-                color: "pink.500",
                 cursor: "pointer",
+                textDecoration: "none",
+                bg: buttonBg,
+                boxShadow: `0px 1px 12px rgba(236, 99, 166)`,
+              }}
+              _active={{
+                cursor: "pointer",
+                textDecoration: "none",
+                bg: buttonBg,
+                boxShadow: `0px 1px 12px rgba(236, 99, 166)`,
               }}
             >
               Resume
@@ -108,7 +125,9 @@ export default function NavBar() {
             aria-label={"Toggle Navigation"}
             _hover={{
               textDecoration: "none",
+              color: pink,
             }}
+            _active={{ color: pink }}
           />
         </Flex>
         <Flex ml={{ base: -2 }} display={{ base: "flex", md: "flex" }}>
@@ -119,7 +138,9 @@ export default function NavBar() {
             variant={"ghost"}
             _hover={{
               textDecoration: "none",
+              color: pink,
             }}
+            _active={{ color: pink }}
           />
         </Flex>
       </Flex>
@@ -130,7 +151,7 @@ export default function NavBar() {
         finalFocusRef={btnRef}
       >
         <DrawerOverlay />
-        <DrawerContent>
+        <DrawerContent backgroundColor={light}>
           <DrawerCloseButton onClick={onClose} />
           <DrawerBody>
             <MobileNav />
@@ -188,43 +209,56 @@ const DesktopNav = () => {
 };
 
 const MobileNav = () => {
-    const dark = useColorModeValue("gray.800", "white");
-     const onButtonClick = () => {
-       fetch(AppolinesResume).then((response) => {
-         response.blob().then((blob) => {
-           const fileURL = window.URL.createObjectURL(blob);
-           let alink = document.createElement("a");
-           alink.href = fileURL;
-           alink.download = AppolinesResume;
-           alink.click();
-         });
-       });
-     };
+  const buttonBg = useColorModeValue("pink.500", "gray.800");
+  const buttonText = useColorModeValue("white", "pink.400");
+  const buttonBorder = useColorModeValue("pink.500", "pink.400");
+  const onButtonClick = () => {
+    fetch(AppolinesResume).then((response) => {
+      response.blob().then((blob) => {
+        const fileURL = window.URL.createObjectURL(blob);
+        let alink = document.createElement("a");
+        alink.href = fileURL;
+        alink.download = AppolinesResume;
+        alink.click();
+      });
+    });
+  };
 
   return (
-    <Stack p={4} display={{ md: "none" }}>
+    <Stack py={6} display={{ md: "none" }}>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
-      <Text
-      
-        ml={6}
-        id="downloadBtn"
-        value="download"
-        onClick={onButtonClick}
-        py={2}
-   
-        fontSize={"lg"}
-        fontWeight={500}
-        color={dark}
-        _hover={{
-          textDecoration: "none",
-          color: "pink.500",
-          cursor: "pointer",
-        }}
-      >
-        Resume
-      </Text>
+      <Flex direction={"column"} align={"center"} py={4}>
+        <Text
+          as={Button}
+          maxW={"100px"}
+          id="downloadBtn"
+          value="download"
+          onClick={onButtonClick}
+          py={4}
+          fontSize={"lg"}
+          fontWeight={500}
+          color={buttonText}
+          bg={buttonBg}
+          border={"solid"}
+          borderColor={buttonBorder}
+          _hover={{
+            cursor: "pointer",
+            textDecoration: "none",
+            bg: buttonBg,
+            boxShadow: `0px 1px 12px rgba(236, 99, 166)`,
+          }}
+          _active={{
+            cursor: "pointer",
+            textDecoration: "none",
+            bg: buttonBg,
+            boxShadow: `0px 1px 12px rgba(236, 99, 166)`,
+          }}
+        >
+          Resume
+        </Text>
+      </Flex>
     </Stack>
   );
 };
@@ -232,9 +266,10 @@ const MobileNav = () => {
 const MobileNavItem = ({ label, href }) => {
   const dark = useColorModeValue("gray.800", "white");
   return (
-    <Stack spacing={4}>
+    <Stack spacing={6}>
       <Flex
-        py={2}
+        direction={"column"}
+        py={4}
         as={Link}
         to={href}
         justify={"space-between"}

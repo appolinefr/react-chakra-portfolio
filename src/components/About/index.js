@@ -84,17 +84,19 @@ export default function AboutAuthor() {
           </SimpleGrid>
         </Stack>
         <Flex justifyContent={"center"}>
-          <Image
-            alt={"Appoline Cogan"}
-            src={Appoline}
-            objectFit={"cover"}
-            width={300}
-            aspect-ratio={300 / 300}
-            height={300}
-            borderRadius={"full"}
-            _hover={{
-              boxShadow: "0px 5px 40px rgba(236, 99, 166)",
-            }}
+          <Image 
+          alt={"Appoline Cogan"}
+          src={Appoline}
+          objectFit={"cover"}
+          width={300}
+          aspect-ratio={300 / 300}
+          height={300}
+          borderRadius={"full"}
+          _hover=
+          {{
+            boxShadow: "0px 5px 40px rgba(236, 99, 166)",
+            opacity: 1,
+          }}
           />
         </Flex>
       </SimpleGrid>
