@@ -63,7 +63,7 @@ export default function NavBar() {
             textAlign={useBreakpointValue({ md: "left" })}
             color={dark}
             fontSize={{ base: "2xl", xl: "3xl" }}
-            fontWeight={500}
+            fontWeight={400}
             lineHeight={"110%"}
             p={2}
             mx={2}

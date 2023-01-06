@@ -16,7 +16,7 @@ export default function Socials() {
   const [isLargerThan1280] = useMediaQuery("(min-width: 1441px)");
   const { hasCopied, onCopy } = useClipboard("appolinecogan@gmail.com");
   const pink = useColorModeValue("pink.500", "pink.400");
-   const lightPink = useColorModeValue("pink.500", "pink");
+  const lightPink = useColorModeValue("pink.500", "pink");
   const button = useColorModeValue("gray.800", "white");
 
   return (

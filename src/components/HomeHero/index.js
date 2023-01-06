@@ -19,7 +19,7 @@ export default function HomeHero() {
 
   return (
     <Box as={Container} maxW="full" my={{ base: 4, md: 12, lg: 16 }}>
-      <Stack textAlign={"left"} spacing={{ base: 6, md: 8 }}>
+      <Stack textAlign={"left"} spacing={{ base: 8, md: 10 }}>
         <Text
           fontWeight={400}
           fontSize={{ base: "xl", lg: "2xl" }}
@@ -37,13 +37,13 @@ export default function HomeHero() {
           Appoline Cogan.
           <br />
           <Text as={"span"} color={"pink"}>
-            I am a Web Developer.
+            I am a Full-Stack Developer.
           </Text>
         </Heading>
-        <Text color={grey} fontSize={"lg"}>
-          I am a Full-Stack Developer from Melbourne, Australia. <br />
-          Well-organised person, problem solver and independent with high
-          attention to detail.
+        <Text color={grey} fontSize={"lg"} maxW={"2xl"}>
+          I'm a well-organised, problem solver and independent developer from
+          Melbourne, Australia.
+          Interested in the entire full-stack spectrum and working on creative projects with positive people.
         </Text>
         <Button
           fontSize={"lg"}

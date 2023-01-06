@@ -6,9 +6,10 @@ import {
   Heading,
   Stack,
   Link,
-  HStack,
   IconButton,
   useColorModeValue,
+  List,
+  ListItem,
 } from "@chakra-ui/react";
 
 import { BiLinkExternal } from "react-icons/bi";
@@ -20,41 +21,31 @@ const projects = [
     description:
       "Your personality may meld with many superheroes out there in the Marvel universe. This mystery matcher quiz will match you with the Marvel superhero that best suits your personality.",
     link: "https://rfox01.github.io/Group-4-Project-1/index.html",
-    tech: ["JS", "Bulma", "Wikipedia API", "HTML"],
+    github: "https://github.com/RFox01/Group-4-Project-1",
+    tech: ["JS", "Bulma", "Wikipedia API", "HTML", "CSS"],
   },
   {
     name: "Merchant Game",
     description:
       "The Merchant Game is a medieval themed trading game where players can travel around a world map via icons on a map image to buy and sell goods at different locations on the map..",
-    link: "https://rfox01.github.io/Group-4-Project-1/index.html",
-    tech: ["JS", "Bulma", "Wikipedia API", "HTML"],
+    link: "https://github.com/Wombattree/MerchantGame",
+    github: "https://github.com/Wombattree/MerchantGame",
+    tech: ["Handlebars", "Node", "Express", "Sequelize", "MySQL", "Heroku"],
   },
   {
-    name: "Work Day Scheduler",
+    name: "Employee Tracker",
     description:
-      "  Simple calendar app that allows a user to save events for each hour of the day. This app is running in the browser and feature dynamically updated HTML and CSS powered by jQuery.",
-    link: "https://github.com/appolinefr/Work-Day-Scheduler",
-    tech: ["JS", "Bulma", "Wikipedia API", "HTML"],
+      "A command-line application from scratch to manage a company's employee database, using Node.js, Inquirer, and MySQL.",
+    link: "https://github.com/appolinefr/Employee-tracker",
+    github: "https://github.com/appolinefr/Employee-tracker",
+    tech: ["JS", "Node", "MySQL"],
   },
   {
-    name: "Note Taker",
+    name: "Social-network API",
     description:
-      "This Heroku deployed application called Note Taker can be used to write and save notes. This application uses an Express.js back end and saves and retrieves note data from a JSON file.",
-    link: "https://github.com/appolinefr/Note-Taker",
-    tech: ["JS", "Bulma", "Wikipedia API", "HTML"],
-  },
-  {
-    name: "Weather Dashboard",
-    description:
-      "This weather dashboard runs in the browser and feature dynamically updated HTML and CSS. It uses OpenWeather API to retrieve data and store persistent data to localStorage.",
-    link: "https://github.com/appolinefr/Weather-Dashboard",
-    tech: ["JS", "Bulma", "Wikipedia API", "HTML"],
-  },
-  {
-    name: "Code Quiz",
-    description:
-      "A timed coding quiz with multiple-choice questions. This app with a clean user interface runs in the browser and features dynamically updated HTML and CSS powered by JS code.",
-    link: "https://github.com/appolinefr/Code-quiz",
+      "A API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list.",
+    link: "https://github.com/appolinefr/Social-network-API",
+    github: "https://github.com/appolinefr/Social-network-API",
     tech: ["JS", "Bulma", "Wikipedia API", "HTML"],
   },
 ];
@@ -117,7 +108,6 @@ export default function OtherProjects() {
                   icon={<BiLinkExternal />}
                   _hover={{
                     color: pink,
-                    
                   }}
                   _active={{ color: pink }}
                   isRound
@@ -128,13 +118,19 @@ export default function OtherProjects() {
               {project.name}
             </Heading>
             <Text color={grey}>{project.description}</Text>
-            <HStack>
+            <List>
               {project.tech.map((type, index) => (
-                <Text key={index} fontSize={"sm"} color={list}>
+                <ListItem
+                  key={index}
+                  fontSize={"sm"}
+                  color={list}
+                  display={"inline-block"}
+                  px={1}
+                >
                   {type}
-                </Text>
+                </ListItem>
               ))}
-            </HStack>
+            </List>
           </Stack>
         </Box>
       ))}

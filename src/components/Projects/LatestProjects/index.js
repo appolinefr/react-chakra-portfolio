@@ -22,6 +22,7 @@ export default function Projects() {
   const [show, setShow] = React.useState(false);
   const handleToggle = () => setShow(!show);
 
+  const lightPink = useColorModeValue("pink.500", "pink");
   const buttonBg = useColorModeValue("pink.500", "gray.800");
   const buttonText = useColorModeValue("white", "pink.400");
   const buttonBorder = useColorModeValue("pink.500", "pink.400");
@@ -40,7 +41,7 @@ export default function Projects() {
         <Divider
           width={{ sm: "150px", md: "300px", lg: "400px" }}
           orientation="horizontal"
-          borderColor={"pink"}
+          borderColor={lightPink}
           ml={8}
         />
       </Flex>
