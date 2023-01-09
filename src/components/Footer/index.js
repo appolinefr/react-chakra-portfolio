@@ -75,14 +75,7 @@ export default function Footer() {
           </Link>
         </Stack>
       </Stack>
-      <Flex
-        minH={"80px"}
-        py={{ base: 4 }}
-        align={"center"}
-        justify="center"
-        // backgroundColor={"#1B2333"}
-        // color={"white"}
-      >
+      <Flex minH={"80px"} py={{ base: 4 }} align={"center"} justify="center">
         <Text>Designed and Built by Appoline Cogan</Text>
       </Flex>
     </Box>

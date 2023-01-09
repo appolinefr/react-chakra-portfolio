@@ -18,21 +18,22 @@ import Weather from "../Weather";
 import OtherProjects from "../OtherProjects";
 
 export default function Projects() {
-  const [isLargerThan1280] = useMediaQuery("(min-width: 1441px)");
   const [show, setShow] = React.useState(false);
   const handleToggle = () => setShow(!show);
 
+  const dark = useColorModeValue("gray.700", "white");
   const lightPink = useColorModeValue("pink.500", "pink");
   const buttonBg = useColorModeValue("pink.500", "gray.800");
   const buttonText = useColorModeValue("white", "pink.400");
   const buttonBorder = useColorModeValue("pink.500", "pink.400");
 
   return (
-    <Box as={Container} maxW="full" p={isLargerThan1280 ? 8 : 4}>
+    <Box as={Container} maxW="full">
       <Flex alignItems={"center"}>
         <Heading
           id={"projects"}
           fontWeight={600}
+          color={dark}
           lineHeight={"110%"}
           py={{ base: 8, md: 12 }}
         >

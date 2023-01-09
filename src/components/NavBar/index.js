@@ -4,7 +4,6 @@ import {
   Flex,
   Text,
   IconButton,
-  Button,
   Stack,
   useBreakpointValue,
   useDisclosure,
@@ -20,33 +19,33 @@ import {
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { BsSun, BsMoon } from "react-icons/bs";
 
-import AppolinesResume from "../../pdf/AppolinesResume.pdf";
+import Resume from "../Resume";
 
 import { Link, animateScroll as scroll } from "react-scroll";
 
+const NAV_ITEMS = [
+  {
+    label: "About",
+    href: "about",
+  },
+  {
+    label: "Projects",
+    href: "projects",
+  },
+  {
+    label: "Contact",
+    href: "contact",
+  },
+];
+
 export default function NavBar() {
-  const dark = useColorModeValue("gray.800", "white");
+  const dark = useColorModeValue("gray.700", "white");
   const light = useColorModeValue("white", "gray.800");
-  const buttonBg = useColorModeValue("pink.500", "gray.800");
-  const buttonText = useColorModeValue("white", "pink.400");
-  const buttonBorder = useColorModeValue("pink.500", "pink.400");
   const pink = useColorModeValue("pink.500", "pink.400");
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
   const { colorMode, toggleColorMode } = useColorMode();
-
-  const onButtonClick = () => {
-    fetch(AppolinesResume).then((response) => {
-      response.blob().then((blob) => {
-        const fileURL = window.URL.createObjectURL(blob);
-        let alink = document.createElement("a");
-        alink.href = fileURL;
-        alink.download = AppolinesResume;
-        alink.click();
-      });
-    });
-  };
 
   return (
     <Box position="sticky" inset={0} zIndex="sticky">
@@ -77,42 +76,9 @@ export default function NavBar() {
           </Heading>
         </Flex>
         <Flex>
-          <Flex
-            display={{ base: "none", md: "flex" }}
-            align={"center"}
-            spacing={6}
-            mr={6}
-          >
+          <Flex display={{ base: "none", md: "flex" }} align={"center"} mr={6}>
             <DesktopNav />
-            <Text
-              as={Button}
-              maxW={"100px"}
-              id="downloadBtn"
-              value="download"
-              onClick={onButtonClick}
-              py={4}
-              ml={6}
-              fontSize={"lg"}
-              fontWeight={500}
-              color={buttonText}
-              bg={buttonBg}
-              border={"solid"}
-              borderColor={buttonBorder}
-              _hover={{
-                cursor: "pointer",
-                textDecoration: "none",
-                bg: buttonBg,
-                boxShadow: `0px 1px 12px rgba(236, 99, 166)`,
-              }}
-              _active={{
-                cursor: "pointer",
-                textDecoration: "none",
-                bg: buttonBg,
-                boxShadow: `0px 1px 12px rgba(236, 99, 166)`,
-              }}
-            >
-              Resume
-            </Text>
+            <Resume />
           </Flex>
         </Flex>
         <Flex ml={{ base: -2 }} display={{ base: "flex", md: "none" }}>
@@ -162,23 +128,8 @@ export default function NavBar() {
   );
 }
 
-const NAV_ITEMS = [
-  {
-    label: "About",
-    href: "about",
-  },
-  {
-    label: "Projects",
-    href: "projects",
-  },
-  {
-    label: "Contact",
-    href: "contact",
-  },
-];
-
 const DesktopNav = () => {
-  const dark = useColorModeValue("gray.800", "white");
+  const dark = useColorModeValue("gray.700", "white");
 
   return (
     <Stack direction={"row"} spacing={6}>
@@ -209,65 +160,24 @@ const DesktopNav = () => {
 };
 
 const MobileNav = () => {
-  const buttonBg = useColorModeValue("pink.500", "gray.800");
-  const buttonText = useColorModeValue("white", "pink.400");
-  const buttonBorder = useColorModeValue("pink.500", "pink.400");
-  const onButtonClick = () => {
-    fetch(AppolinesResume).then((response) => {
-      response.blob().then((blob) => {
-        const fileURL = window.URL.createObjectURL(blob);
-        let alink = document.createElement("a");
-        alink.href = fileURL;
-        alink.download = AppolinesResume;
-        alink.click();
-      });
-    });
-  };
-
   return (
     <Stack py={6} display={{ md: "none" }}>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
       <Flex direction={"column"} align={"center"} py={4}>
-        <Text
-          as={Button}
-          maxW={"100px"}
-          id="downloadBtn"
-          value="download"
-          onClick={onButtonClick}
-          py={4}
-          fontSize={"lg"}
-          fontWeight={500}
-          color={buttonText}
-          bg={buttonBg}
-          border={"solid"}
-          borderColor={buttonBorder}
-          _hover={{
-            cursor: "pointer",
-            textDecoration: "none",
-            bg: buttonBg,
-            boxShadow: `0px 1px 12px rgba(236, 99, 166)`,
-          }}
-          _active={{
-            cursor: "pointer",
-            textDecoration: "none",
-            bg: buttonBg,
-            boxShadow: `0px 1px 12px rgba(236, 99, 166)`,
-          }}
-        >
-          Resume
-        </Text>
+        <Resume />
       </Flex>
     </Stack>
   );
 };
 
 const MobileNavItem = ({ label, href }) => {
-  const dark = useColorModeValue("gray.800", "white");
+  const dark = useColorModeValue("gray.700", "white");
   return (
     <Stack spacing={6}>
       <Flex
+        ml={6}
         direction={"column"}
         py={4}
         as={Link}

@@ -25,17 +25,9 @@ const projects = [
     tech: ["JS", "Bulma", "Wikipedia API", "HTML", "CSS"],
   },
   {
-    name: "Merchant Game",
-    description:
-      "The Merchant Game is a medieval themed trading game where players can travel around a world map via icons on a map image to buy and sell goods at different locations on the map..",
-    link: "https://github.com/Wombattree/MerchantGame",
-    github: "https://github.com/Wombattree/MerchantGame",
-    tech: ["Handlebars", "Node", "Express", "Sequelize", "MySQL", "Heroku"],
-  },
-  {
     name: "Employee Tracker",
     description:
-      "A command-line application from scratch to manage a company's employee database, using Node.js, Inquirer, and MySQL.",
+      "The employee tracker is a command-line application to manage a company's employee database, using Node.js, Inquirer, and MySQL.",
     link: "https://github.com/appolinefr/Employee-tracker",
     github: "https://github.com/appolinefr/Employee-tracker",
     tech: ["JS", "Node", "MySQL"],
@@ -46,7 +38,15 @@ const projects = [
       "A API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list.",
     link: "https://github.com/appolinefr/Social-network-API",
     github: "https://github.com/appolinefr/Social-network-API",
-    tech: ["JS", "Bulma", "Wikipedia API", "HTML"],
+    tech: ["Express", "MongoDB", "Mongoose", "Node"],
+  },
+  {
+    name: "Merchant Game",
+    description:
+      "The Merchant Game is a medieval themed trading game where players can travel around a world map via icons on a map image to buy and sell goods at different locations on the map..",
+    link: "https://github.com/Wombattree/MerchantGame",
+    github: "https://github.com/Wombattree/MerchantGame",
+    tech: ["Handlebars", "Node", "Express", "Sequelize", "MySQL", "Heroku"],
   },
 ];
 
@@ -70,17 +70,12 @@ export default function OtherProjects() {
             transform: "translateY(-7px)",
             transition: " all 0.2s ease-in-out",
           }}
+          backgroundColor={boxBg}
           boxShadow="xl"
           key={index}
           h={"100%"}
         >
-          <Stack
-            spacing={4}
-            justifyContent={"center"}
-            backgroundColor={boxBg}
-            p={5}
-            borderRadius="4px"
-          >
+          <Stack spacing={4} justifyContent={"center"} p={5} borderRadius="4px">
             <Flex justify={"flex-end"} color={pink} align={"center"}>
               <BsFolder size="34px" />
               <Link href={project.link} ml={"auto"} target="_blank">

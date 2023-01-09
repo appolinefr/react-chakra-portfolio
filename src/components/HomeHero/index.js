@@ -11,7 +11,7 @@ import {
 import { Link } from "react-scroll";
 
 export default function HomeHero() {
-  const dark = useColorModeValue("gray.800", "white");
+  const dark = useColorModeValue("gray.700", "white");
   const grey = useColorModeValue("gray.600", "gray.400");
   const buttonBg = useColorModeValue("pink.500", "gray.800");
   const buttonText = useColorModeValue("white", "pink.400");

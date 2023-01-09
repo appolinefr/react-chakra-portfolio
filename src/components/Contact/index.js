@@ -24,6 +24,7 @@ import { BsPerson } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
 
 export default function ContactForm() {
+  const dark = useColorModeValue("gray.700", "white");
   const grey = useColorModeValue("gray.600", "gray.400");
   const focus = useColorModeValue("pink.500", "white");
   const boxBg = useColorModeValue("white", "gray.800");
@@ -57,6 +58,7 @@ export default function ContactForm() {
         <Heading
           as={Center}
           fontWeight={600}
+          color={dark}
           lineHeight={"110%"}
           py={{ base: 8, md: 12 }}
         >

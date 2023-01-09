@@ -38,7 +38,7 @@ export default function ReactDictionary() {
     <SimpleGrid
       columns={{ base: 1, md: 2, lg: 2 }}
       spacing={{ sm: 4, md: 8, lg: 16 }}
-      my={{ base: 1, md: 12, lg: 16 }}
+      mb={{ base: 4, md: 12, lg: 16 }}
     >
       <Box as={Link} href={dictionary.link}>
         <Image

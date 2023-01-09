@@ -13,7 +13,6 @@ import {
   Divider,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { useMediaQuery } from "@chakra-ui/react";
 
 import { RxTriangleRight } from "react-icons/rx";
 
@@ -26,13 +25,11 @@ export default function AboutAuthor() {
   const dark = useColorModeValue("gray.800", "white");
   const grey = useColorModeValue("gray.600", "gray.400");
   const lightPink = useColorModeValue("pink.500", "pink");
-  const [isLargerThan1280] = useMediaQuery("(min-width: 1441px)");
 
   return (
     <Box
       as={Container}
       maxW="full"
-      p={isLargerThan1280 ? 8 : 4}
       my={{ base: 4, md: 12, lg: 16 }}
     >
       <Flex alignItems={"center"}>
