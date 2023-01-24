@@ -18,7 +18,7 @@ import { RxTriangleRight } from "react-icons/rx";
 
 import Appoline from "../../images/appo.jpeg";
 
-const frontEnd = ["JavaScript (ES6+)", "React", "Chakra UI", "Gatsby"];
+const frontEnd = ["JavaScript (ES6+)", "React", "Chakra UI", "Next.js"];
 const backEnd = ["Node.js", "Express", "Heroku", "MongoDB"];
 
 export default function AboutAuthor() {
@@ -27,11 +27,7 @@ export default function AboutAuthor() {
   const lightPink = useColorModeValue("pink.500", "pink");
 
   return (
-    <Box
-      as={Container}
-      maxW="full"
-      my={{ base: 4, md: 12, lg: 16 }}
-    >
+    <Box as={Container} maxW="full" my={{ base: 4, md: 12, lg: 16 }}>
       <Flex alignItems={"center"}>
         <Heading
           id={"about"}

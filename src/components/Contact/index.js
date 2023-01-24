@@ -123,7 +123,7 @@ export default function ContactForm() {
                 color={grey}
                 _placeholder={{ color: "inherit" }}
                 required
-                type="email"
+                type="text"
                 placeholder="Your Message"
                 name="user_message"
                 rows={6}

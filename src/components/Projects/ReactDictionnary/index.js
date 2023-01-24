@@ -19,12 +19,12 @@ import { BsGithub } from "react-icons/bs";
 import Dictionary from "../../../images/dictionary.png";
 
 const dictionary = {
-  name: "React Dictionnary",
+  name: "React Dictionary",
   description:
-    "The abortion saves lives app will allow South Australian people to look for abortion providers in their state and to give testimonials about their experience to help others make the decision on where to have their procedure.",
-  link: "https://boisterous-pie-d58aaf.netlify.app/",
+    "This dictionary app featuring a search engine was build with React. It includes 2 API integrations and has been deployed on Netlify.",
+  link: "https://react-dictionary-app-ac.netlify.app",
   image: Dictionary,
-  github: "",
+  github: "https://github.com/appolinefr/react-dictionary-search",
   tech: [" React ", " Chakra UI ", " API "],
 };
 

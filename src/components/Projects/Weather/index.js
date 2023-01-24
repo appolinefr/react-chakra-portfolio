@@ -16,23 +16,16 @@ import {
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { BsGithub } from "react-icons/bs";
 
-import Abortion from "../../../images/abortion.png";
+import Weather from "../../../images/weather.png";
 
 const asl = {
-  name: "Abortion saves lives",
+  name: "Weather app",
   description:
-    "The abortion saves lives app will allow South Australian people to look for abortion providers in their state and to give testimonials about their experience to help others make the decision on where to have their procedure.",
-  link: "https://abortion-saves-lives.herokuapp.com/",
-  github: "",
-  image: Abortion,
-  tech: [
-    "React ",
-    " Chakra UI ",
-    " Node.js ",
-    " Express ",
-    " MongoDB ",
-    " Mongoose ",
-  ],
+    "This app is a weather dashboard that uses OpenWeather One Call API. to retrieve weather data for cities current weather and forecast.",
+  link: "https://simple-react-weather-app-ac.netlify.app",
+  github: "https://github.com/appolinefr/react-weather-application",
+  image: Weather,
+  tech: ["React ", " Chakra UI ", "OpenWeather API"],
 };
 
 export default function AbortionProject() {

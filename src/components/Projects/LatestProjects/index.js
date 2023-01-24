@@ -10,8 +10,6 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-import { useMediaQuery } from "@chakra-ui/react";
-
 import Abortion from "../AbortionSavesLives";
 import Dictionary from "../ReactDictionnary";
 import Weather from "../Weather";
